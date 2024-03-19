@@ -1,0 +1,52 @@
+
+{% liquid
+	assign title = blog.title
+	assign author = blog.author
+	assign publishedAt = blog.published_at
+	assign image = blog.image
+	assign url = blog.url
+	assign content = blog.excerpt  
+	assign tags = blog.tags
+%}
+
+<div class="custom-blog-card">
+	<div class="custom-blog-card__container grid grid--2-col-desktop">
+		<div class="custom-blog-card__image-container grid__item">
+			{% if image != blank %}
+					{% render "responsive-image", desktopImage:image , mobileImage:image %}
+			{% else %}
+				{{ 'blog-apparel-1' | placeholder_svg_tag: 'blog-placeholder-svg' }}
+			{% endif %}
+		</div>
+		<div class="grid__item custom-blog-card__content-container">
+			<div class="custom-blog-card__details">
+				<div class="custom-blog-card__tags-container">
+					{% for tag in tags %}
+						<a href="{{url}}/{{tag}}" class="custom-blog-card__tag">
+							{{tag}}
+						</a>
+					{% endfor %}
+				</div>
+				<h2 class="custom-blog-card__heading h2">
+					<a href="{{url}}">{{title}}</a>
+				</h2>
+				<div class="custom-blog-card__author">
+					<span>Published By: {{author}}</span>
+				</div>
+				<div class="custom-blog-card__description">
+					<span>
+						{{ content }}
+					</span>
+				</div>
+			</div>
+			<div class="custom-blog-card__redirect-button">
+					<a href="{{ url }}" class="custom-blog-card__button">
+						Read More
+					</a>
+					<span>
+						{{ publishedAt | date: '%B %d, %Y'  }}
+					</span>
+			</div>
+		</div>
+	</div>
+</div>

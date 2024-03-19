@@ -1,0 +1,258 @@
+{{ 'section-custom-testimonial.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign paddingTop = section.settings.padding_top
+  assign paddingBottom = section.settings.padding_bottom
+  assign colorScheme = section.settings.color_scheme
+  assign textAllignment = section.settings.text_alignment
+  assign heading = section.settings.section_heading
+  assign backgroundColor = section.settings.background-color
+%}
+
+{% style %}
+  .padding-{{ section.id }} {
+      padding-top: {{ paddingTop | divided_by: 2  }}px;
+      padding-bottom: {{paddingBottom| divided_by: 2 }}px;
+      background : {{ backgroundColor }};
+    }
+
+    @media (min-width: 750px) {
+      .padding-{{ section.id }} {
+        padding-top: {{ paddingTop }}px;
+        padding-bottom: {{ paddingBottom }}px;
+      }
+    }
+{% endstyle %}
+
+{% capture slider-options-data %}
+  {
+    "autoplay" : {{ section.settings.slider_autoplay }},
+    "interval" : {{ section.settings.slider_autoplay_duration }},
+    "type" : "{{ section.settings.slide_animation }}",
+    "pagination": {{ section.settings.slide_dots }},
+    "gap": "20px",
+    "perPage": 3,
+    "arrows" : {{ section.settings.slide_arrows }},
+    "rewind" : {{ section.settings.infinite_scroll }},
+    "breakpoints": {
+    "750": {
+      "perPage": 1
+    }
+    }
+  }
+{% endcapture %}
+
+<div class="testimonial padding-{{ section.id }}">
+  <div class="page-width">
+    <div class="testimonial__heading-section">
+      {% if heading != blank %}
+        <h2 class="h1 testimonial__section-heading">{{ heading }}</h2>
+      {% endif %}
+    </div>
+    <splider-component>
+      <section class="splide" aria-label="Testimonial Splide" data-slider-settings='{{ slider-options-data }}'>
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for block in section.blocks %}
+              <li class="splide__slide testimonial__slide {{ textAllignment }} color-{{ colorScheme.id }}">
+                
+                  {% liquid
+                    assign desktopImage = block.settings.image
+                    assign blockHeading = block.settings.heading
+                    assign designation = block.settings.designation
+                    assign comment = block.settings.description
+                  %}
+                
+                  <div class="testimonial__image">
+                  {% if desktopImage != blank %}
+                    <img src="{{ desktopImage |  image_url: width:"60px" , height :"60px"  }}" alt="{{ desktopImage.alt }}"/>
+                  {% else %}
+                    {% render "icon-account" %}
+                  {% endif %}
+                  </div>
+                {% if blockHeading != blank %}
+                  <h2 class="h4 testimonial__heading">{{blockHeading }}</h2>
+                {% endif %}
+
+                {% if designation!= blank %}
+                  <h2 class="h4 testimonial__designation">{{designation }}</h2>
+                {% endif %}
+
+                {% if comment != blank %}
+                  <div class="testimonial__comment">{{ comment }}</div>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </section>
+    </splider-component>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Testimonial",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section heading",
+      "default": "Our Customers Review"
+    },
+    {
+      "type" : "header",
+      "content" : "Slider settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_autoplay",
+      "label": "Slide autoplay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_dots",
+      "label": "Show slide dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_arrows",
+      "label": "Show slide arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_scroll",
+      "label": "Infinite scroll",
+      "default": true
+    },
+    {
+      "type" : "select",
+      "id": "slide_animation",
+      "label" : "Slide animation",
+      "options" : [
+        {
+          "value" : "loop",
+          "label" : "Loop"
+        },
+        {
+          "value" : "fade",
+          "label" : "Fade"
+        },
+        {
+          "value" : "slide",
+          "label" : "Slide"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "slider_autoplay_duration",
+      "label": "Slider autoplay duration",
+      "min" : 1000,
+      "step":1000,
+      "max" : 8000,
+      "default": 3000,
+      "unit": "ms",
+      "info" : "ms-milliseconds"
+    },
+    {
+      "type" : "header",
+      "content" : "Alignment Settings"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme"
+    },
+    {
+      "type":"color",
+      "label":"Background color",
+      "id":"background-color"
+    },
+    {
+      "type" : "header",
+      "content" : "Section padding settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Section padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Section padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonia-blocks",
+      "name": "Tesimonial blocks",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Person Name"
+        },
+        {
+          "type": "text",
+          "id": "designation",
+          "label": "Designation",
+          "default": "Add designation"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Comment",
+          "default": "<p>Absolutely love the trendy collection! The quality is unmatched, and each piece tells a unique style story.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Testimonial"
+    }
+  ]
+}
+{% endschema %}

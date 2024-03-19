@@ -1,0 +1,93 @@
+{{ "section-custom-featured-brands.css" | asset_url | stylesheet_tag }}
+
+{%  style  %} 
+  .padding-{{section.id}} {
+    padding-top: {{ section.settings.padding_top | divided_by: 2 }};
+    padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }};
+  }
+
+  .featured-brands__section{
+    Background : {{ section.settings.background_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .padding-{{section.id}} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="featured-brands padding-{{section.id}} ">
+  <div class="page-width">
+    <div class="featured-brands__section">
+      <div class="grid grid--3-col grid--4-col-tablet grid--6-col-desktop">
+        {% for block in section.blocks %}
+          <div class="featured-brands__image grid__item">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image |  image_url: width:"85px" , height :"50px"  }}" alt="{{ block.settings.image.alt }}"/> 
+            {% endif %}  
+          </div>
+        {% endfor %}  
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Featured Brands",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section padding"
+      },
+      {
+        "type":"color",
+        "label":"Background color",
+        "id":"background_color"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      }  
+    ],
+    "blocks": [
+      {
+        "type":"featured-brands",
+        "name": "featured brands",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          } 
+        ]
+      }
+      
+    ],
+    "presets":[
+      {
+        "name": "Featured Brands"
+      }
+    ]
+  }
+{% endschema %}

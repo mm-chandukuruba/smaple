@@ -1,0 +1,143 @@
+{{ 'custom-timer.css' |  asset_url |  stylesheet_tag }} 
+<script src="{{ "custom-timer.js" | asset_url }}" defer></script>
+
+{% style %}
+  .padding-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+  }
+
+  @media only screen and (min-width: 750px) {
+    .padding-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+   }
+
+  .coustom-timer__button-{{ section.id }}{
+    color: {{ section.settings.button_color }};
+    background-color: {{ section.settings.button_bg }};
+  }
+{% endstyle %}
+
+<div class="custom-timer padding-{{ section.id }} color-{{ section.settings.color_scheme }}">
+    <div class="page-width">
+        <div class="grid grid--1-col grid--2-col-desktop">
+            <div class="grid__item custom-timer__text-wrapper">
+                {% if section.settings.heading  %}
+                  <h2 class = "h1">{{ section.settings.heading }}</h2>
+                {% endif %}
+                {% if section.settings.description  %}
+                   <p class = "custom-timer__description">{{ section.settings.description }}</p>
+                {% endif %}
+                {% if section.settings.button_text != blank %}
+                  <a
+                      {% if section.settings.button_link == blank %}
+                      role="link" aria-disabled="true"
+                      {% else %}
+                      href="{{ section.settings.button_link }}"
+                      {% endif %}
+                      class="button"
+                  >
+                      <span>{{- section.settings.button_text | escape -}}</span>
+                  </a>
+              {%  endif %}
+            </div>   
+            <div class="grid__item custom-timer__time-wrapper" id="date" data-date="{{ section.settings.date }}">
+                <div class = "custom-timer__card">
+                    <span class = "h1 custom-timer__time" id="days" >{{ section.settings.no_of_days }}</span>
+                    <span class = "h4">Days</span>
+                </div>
+                <span class = "h1 custom-timer__colon">:</span>
+                <div class = "custom-timer__card">
+                    <h2 class = "h1 custom-timer__time" id="hours">00</h2>
+                    <span class = "h4">Hours</span>
+                </div>
+                <span class = "h1 custom-timer__colon">:</span>
+                <div class = "custom-timer__card">
+                    <span class = "h1 custom-timer__time" id="minutes">00</span>
+                    <span class = "h4">Mins</span>
+                </div>
+                <span class = "h1 custom-timer__colon">:</span>
+                <div class = "custom-timer__card ">
+                    <span class = "h1 custom-timer__time" id="seconds">00</span>
+                    <span class = "h4">Sec</span>
+                </div>
+            </div>     
+             
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Custom Timer",
+  "tag" : "section",
+  "settings": [
+    {
+      "type" : "text",
+      "id" : "heading",
+      "label" : "Heading",
+      "default" : "Timer Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "description",
+      "default": "<p>Timer Description</p>"
+    },
+    {
+      "type": "text",
+      "id":"button_text",
+      "label":"Button Label"
+    },
+    {
+      "type": "url",
+      "id":"button_link",
+      "label":"Button Link"
+    },
+    {
+      "type": "color_scheme",
+      "id":"color_scheme",
+      "label":"Color Scheme"
+    },
+    {
+      "type": "text",
+      "id": "date",
+      "label": "No of days for countdown",
+      "default": "feb 29, 2024",
+      "info": "Enter date like Feb 29,2024"
+    },  
+    {
+      "type": "header",
+      "content": "Adjust Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Timer"
+    }
+  ]
+}
+{% endschema %}

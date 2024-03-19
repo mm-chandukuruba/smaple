@@ -1,0 +1,234 @@
+.product-card__primary-image .media,
+.product-card__secondary-image .media {
+  border-radius: var(--media-radius);
+  transition: opacity var(--duration-medium) ease;
+  overflow: hidden;
+}
+
+.product-card__secondary-image .media {
+  display: none;
+  opacity: 0;
+}
+
+.product-card__image-container {
+  position: relative;
+}
+
+.product-card__image-container:hover {
+  .product-card__secondary-image .media {
+    display: block;
+    opacity: 1;
+  }
+  .product-card__primary-image .media {
+    display: none;
+    opacity: 0;
+  }
+}
+
+.product-card__tags-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 15px;
+}
+
+.product-card__tags-container div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.quick-look-button .button {
+  font-size: calc(var(--font-body-scale) * 14px);
+  letter-spacing: 0;
+  font-weight: var(--font-body-weight-medium);
+  padding: 5px 15px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.quick-look-button .button svg {
+  fill: rgb(var(--color-button-text));
+  z-index: 2;
+  width: 19px;
+  height: 19px;
+  display: none;
+}
+
+.discount-badge {
+  background-color: #dd1d1d;
+  color: white;
+}
+
+.new-badge {
+  background: green;
+  color: white;
+}
+
+.product-card__tags-container .button:after {
+  background: #d03c3f;
+}
+
+.product-card__details ul {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.product-card__option label {
+  min-width: calc(14px + (var(--variant-pills-border-width) * 2));
+  min-height: calc(14px + (var(--variant-pills-border-width) * 2));
+  margin: 0 10px 10px 0;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  box-shadow: 0 0 0 1px rgba(var(--color-foreground),.1);
+  font-size: 0;
+  border-radius: 50%;
+  border: var(--variant-pills-border-width) solid rgba(var(--color-foreground),var(--variant-pills-border-opacity));
+}
+
+.product-card__option input[type="radio"]:checked + label:before {
+  content: "";
+  box-shadow: 0 0 0 1px #d03c3f;
+  position: absolute;
+  left: -3px;
+  border-radius: 50%;
+  width: 120%;
+  height: 120%;
+  margin-top: -2px;
+}
+
+.product-card__details {
+  text-align: center;
+}
+
+.product-card__vender-name {
+  margin-top: 8px;
+  margin-bottom: 0;
+  word-wrap: break-word;
+  line-height: normal;
+  font-size: calc(var(--font-body-scale) * 14px);
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.product-card__title {
+  font-size: calc(var(--font-body-scale) * 18px);
+  font-weight: var(--font-body-weight-medium);
+  letter-spacing: 0.4px;
+  margin-top: 8px;
+}
+
+.product-card__price-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.product-card__price {
+  letter-spacing: 0;
+  color: rgb(var(--color-foreground));
+  font-weight: var(--font-body-weight-bold);
+  font-size: calc(var(--font-body-scale) * 18px);
+}
+
+.product-card__compare-at-price {
+  font-size: calc(var(--font-body-scale) * 14px);
+  text-decoration: line-through;
+  font-weight: var(--font-body-weight-bold);
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.product-card__availability {
+  margin: 0px;
+  font-size: calc(var(--font-body-scale) * 14px);
+  font-weight: var(--font-body-weight-medium);
+  margin-top: 6px;
+}
+
+.high {
+  color: #008a00;
+}
+
+.low {
+  color: #ff0000;
+}
+
+ul.product-card__options {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.product-card__option {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 5px;
+}
+
+span.product-card__swatch {
+  min-height: 30px;
+  min-width: 30px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+.product-card__option input[type="radio"] {
+  display: none;
+}
+
+.product-card__colorswatch {
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .product-card__tags-container .badge {
+    font-size: calc(var(--font-body-scale) * 10px);
+    letter-spacing: 0.3px;
+    padding: 4px;
+  }
+
+  .quick-look-button .button svg {
+    display: inline-block;
+  }
+
+  .quick-look-button_span {
+    display: none !important;
+  }
+  .product-card__title{
+    font-size: calc(var(--font-body-scale) * 14px);
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
+  
+  .product-card__price{
+    font-size: calc(var(--font-body-scale) * 16px);
+    margin: 0px;
+  }
+  .product-card__compare-at-price{
+    font-size: calc(var(--font-body-scale) * 12px);
+  }
+  .product-card__price-container{
+    margin: 0px;
+    margin-top: 8px;
+  }
+}

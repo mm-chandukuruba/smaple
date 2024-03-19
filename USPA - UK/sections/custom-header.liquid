@@ -1,0 +1,116 @@
+{{ "custom-header.css"  |  asset_url |  stylesheet_tag}}
+
+
+<header class="custom-header__container">
+	<div class="page-width">
+		<nav class="custom-header__navigation-links">
+			<ul class="custom-header__navigation-links__container">
+				{% for links in section.settings.navlist.links %}
+					<li>
+						{% if links.links != blank %}
+							<details class="mega-menu">
+								<summary>
+									<span>{{ links.title }}</span>
+								</summary>
+								<div>
+									<ul>
+										{% for childLink in links.links %}
+											<li>
+												{% if childLink.links != blank %}
+													<ul>
+														<li>
+															<a href="{{ childLink.url }}">
+																<span>{{ childLink.title }}</span>
+															</a>
+														</li>
+														{% for grandchildlink in childLink.links %}
+															<li>
+																<a href="{{ grandChildLink.url }}">
+																	<span>{{ grandChildLink.title }}</span>
+																</a>
+															</li>
+														{% endfor %}
+													</ul>
+												{% else %}
+													<a href="{{ childLink.url }}">
+														<span>{{ childLink.title }}</span>
+													</a>
+												{% endif %}
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</details>
+						{% else %}
+								<a href="{{ links.url }}">
+									<span>{{ links.title }}</span>
+								</a>
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		{% comment %} Logo {% endcomment %}
+			<div>
+				{% if section.settings.logo %}
+					<img src="{{ section.settings.logo |  image_url  }}" alt="navigation-logo"/>
+				{% else %}
+				<span>{{ shop.name }}</span>
+				{% endif %}
+			</div>
+		</nav>
+		<div class="custom-header__icons">
+
+		</div>
+	</div>
+</header>
+
+
+{% schema %}
+	{
+		"name": "Header",
+		"tag": "section",
+		"settings": [
+			{
+				"type": "image_picker",
+				"label": "Logo",
+				"id": "logo"
+			},
+			{
+				"type": "link_list",
+				"label": "Navlist",
+				"id": "navlist"
+			},
+			{
+				"type": "checkbox",
+				"label": "Show icons",
+				"id": "show_icons"
+			}
+		],
+		"blocks": [
+			{
+				"type": "mega_menu",
+				"name": "Mega menu",
+				"limit": 10,
+				"settings": [
+					{
+						"type": "text",
+						"label": "Link title",
+						"id": "link_title",
+						"info": "Mega menu is for test link"
+					},
+					{
+						"type": "image_picker",
+						"label": "Image",
+						"id": "image"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Header"
+			}
+		]
+	}
+	{% endschema %}
+	

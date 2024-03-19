@@ -1,0 +1,29 @@
+.orders-tabel{
+	display: flex;
+	gap: 20px;
+}
+
+.orders-tabel table{
+	width: 100%;
+	border-spacing: unset;
+}
+
+.orders-tabel table thead{
+	background-color: #e3dbd3;
+}
+
+.account-page-subtitle-order {
+	padding-top: 38px;
+	padding-bottom: 28px;
+}
+
+.account-order-history {
+	text-align: center;
+	width: 100%;
+}
+
+@media screen and (max-width:768px) {
+	.orders-tabel{
+		flex-direction: column;
+	}
+}

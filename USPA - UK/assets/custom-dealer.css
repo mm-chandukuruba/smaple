@@ -1,0 +1,136 @@
+.filter {
+	display: block;
+	position: relative;
+	margin-bottom: 20px;
+	display: flex;
+	border-bottom: 1px solid;
+	padding-bottom: 20px;
+}
+
+.container__inner {
+	background-color: #fff;
+	margin-bottom: 40px;
+	padding: 20px;
+	text-align: center;
+}
+
+.h2.custom-dealer__heading {
+	font-weight: 500;
+	font-size: 26px;
+	margin-bottom: 20px;
+}
+
+
+.filter label {
+	width: 28%;
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 10px;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.filter label select {
+	width: 100%;
+	height: 45px;
+	padding: 0 10px;
+	font-size: 16px;
+	border-radius: 4px;
+	font-family: Roboto;
+	color: #6f7175;
+	font-weight: 400;
+	font-weight: 600;
+}
+
+.filter label button {
+	background-color: #6f7175;
+	color: #fff;
+	font-size: 15px;
+	font-family: Roboto;
+	font-weight: 700;
+	width: 100%;
+	height: 51px;
+	line-height: 51px;
+	text-transform: uppercase;
+	text-align: center;
+	cursor: pointer;
+	display: block;
+	padding: 0;
+	border: none;
+	border-radius: 4px;
+}
+
+.filter label span{
+	position: absolute;
+	font-size: 12px;
+	left: 10%;
+	top: 0;
+}
+
+.addresslist {
+	display: block;
+	position: relative;
+	margin: 0 -15px;
+	font-size: 0;
+}
+
+.addresslist .list {
+	width: 33.33%;
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 15px;
+	margin-bottom: 25px;
+}
+
+.addresslist .list .box {
+	display: block;
+	box-shadow: 0 0 25px rgba(208,208,208,.5);
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	overflow: hidden;
+}
+
+#loader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(255, 255, 255, .9);
+	display: none;
+	z-index: 99999;
+	display: none;
+}
+
+#loader span {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 30px;
+	height: 30px;
+	border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border: 2px solid #ea5b29;
+	border-right: 0;
+	animation: round .5s infinite linear;
+	-webkit-animation: round .5s infinite linear;
+}
+
+@keyframes round{
+	0% {
+    transform: rotate(0);
+	}
+	100% {
+			transform: rotate(360deg);
+	}
+}
+
+@media screen and (max-width:768px) {
+	.filter{
+		flex-direction: column;
+	}
+	.filter label{
+		width: 100%;
+	}
+}

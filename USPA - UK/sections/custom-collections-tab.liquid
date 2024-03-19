@@ -1,0 +1,199 @@
+{{ "custom-collections-tab.css" |  asset_url |  stylesheet_tag }}
+<script src="{{ "custom-collections-tabs.js" |  asset_url }}" defer></script>
+
+{% liquid
+	assign paddingTop = section.settings.padding_top
+	assign paddingBottom = section.settings.padding_bottom
+	assign heading = section.settings.heading 
+	assign autoPlay = section.settings.auto_play
+  assign autoPlayDuration = section.settings.auto_play_duration
+  assign showPagination = section.settings.show_pagination
+  assign slideType = section.settings.slide_type
+  assign showArrows = section.settings.show_arrows 
+%}
+
+{% capture sliderSettings %}
+  {
+    "autoplay":{{autoPlay}},
+    "pagination":{{showPagination}},
+    "speed":{{autoPlayDuration}},
+    "type":"{{slideType}}",
+    "arrows":{{showArrows}},
+		"perPage":3,
+		"gap":"20px"
+  }
+{% endcapture %}
+
+
+{% style %}
+	.padding-{{ section.id }}{
+		padding-top : {{ paddingTop |  divided_by: 2 }}px;
+		padding-bottom : {{ paddingBottom |  divided_by: 2 }}px ;
+	}
+
+	@media screen and (min-width:750px){
+		padding-top : {{ paddingTop }}px;
+		padding-bottom : {{ paddingBottom }}px ;
+	}
+{% endstyle %}
+
+<div class="padding-{{ section.id }} custom-collections-tab__container">
+	<div class="page-width">
+		<div class="custom-collections-tab__inner">
+			{% if heading %}
+				<h2 class="h2 custom-collections-tab__heading">{{ heading }}</h2>
+			{% endif %}
+			<div>
+				<ul class="custom-collections-tab__wrapper">
+					{% for block in section.blocks %}
+					<li class="custom-collections-tab {% if forloop.index == 1 %} active {% endif %}uppercase" data-id="{{ block.id }}">
+							<span>{{ block.settings.heading }}</span>
+						</li>
+					{% endfor %}
+				</ul>
+				<div class="custom-collections-tab__product-container">
+					{% for blocks in section.blocks %}
+						<splider-component class="collections-tab__content {% if forloop.index == 1 %} active {% endif %}" data-index="{{ blocks.id }}">
+							<section class="splide" aria-label="Splide Basic HTML Example" data-slider-settings='{{ sliderSettings }}'>
+								<div class="splide__track">
+									<ul class="splide__list">
+										{% assign collection_list = blocks.settings.pick_collection %}
+										{% for product in collection_list.products %}
+											<li class="splide__slide custom-featured-product__product-container">
+												{% render 'custom-product-card',
+													product: product,
+													media_aspect_ratio: section.settings.image_ratio,
+													show_secondary_image: section.settings.show_secondary_image,
+													show_vendor: section.settings.show_vendor,
+													show_rating: section.settings.show_rating,
+													lazy_load: lazy_load,
+													show_quick_add: section.settings.enable_quick_add,
+													section_id: section.id
+												%}
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</section>
+						</splider-component>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% schema %}
+{
+	"name": "Collections tab",
+	"tag": "section",
+	"settings": [
+		{
+      "type": "header",
+      "content": "Slider options"
+    },
+    {
+      "type": "checkbox",
+      "label": "Enable autoplay",
+      "id": "auto_play",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "label": "Show dots",
+      "id": "show_pagination",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "label": "Show arrows",
+      "id": "show_arrows",
+      "default": true
+    },
+    {
+      "type": "range",
+      "label": "Autoplay duration",
+      "id": "auto_play_duration",
+      "default": 1000,
+      "min": 1000,
+      "max": 5000,
+      "step": 1000,
+      "unit": "sec"
+    },
+    {
+      "type":"select",
+      "label":"Slider animation",
+      "id":"slide_type",
+      "default":"slide",
+      "options":[
+        {
+          "label":"Fade",
+          "value":"fade"
+        },
+        {
+          "label":"Loop",
+          "value":"loop"
+        },
+        {
+          "label":"Slide",
+          "value":"slide"
+        }
+      ]
+    },
+		{
+			"type": "text",
+			"label": "Heading",
+			"id": "heading",
+			"default": "Fresh from the source"
+		},
+		{
+			"type": "header",
+			"content": "Section padding"
+		},
+		{
+			"type": "range",
+			"label": "Padding top",
+			"id": "padding_top",
+			"default": 20,
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"unit": "px"
+		},
+		{
+			"type": "range",
+			"label": "Padding bottom",
+			"id": "padding_bottom",
+			"default": 20,
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"unit": "px"
+		}
+	],
+	"blocks": [
+		{
+			"type": "collection_tab",
+			"name": "Collection tab",
+			"settings": [
+				{
+					"type": "richtext",
+					"label": "Heading",
+					"id": "heading"
+				},
+				{
+					"type": "collection",
+					"label": "Pick collection",
+					"id": "pick_collection"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Collections tab"
+		}
+	]
+}
+{% endschema %}

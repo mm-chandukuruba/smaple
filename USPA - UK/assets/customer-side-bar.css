@@ -1,0 +1,38 @@
+.customer-sidebar__container{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.account-page-account-btn:hover{
+  background: var(--Secondary-Colors-S1, #895e59);
+  color: #fff;
+  border-left: 8px solid #bc9891;
+  padding: 0 20px;
+}
+
+.account-page-account-btn{
+  min-width: 320px;
+  height: 48px;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	border-radius: 4px;
+	padding: 0px 20px;
+	background-color: #e3dbd3;
+	gap: 20px;
+}
+
+.active{
+	background: var(--Secondary-Colors-S1, #895e59);
+  color: #fff;
+  border-left: 8px solid #bc9891;
+  padding: 0 20px;
+}
+
+@media screen and (max-width:768px) {
+	.customer-sidebar__container{
+		width: 100%;
+	}
+}

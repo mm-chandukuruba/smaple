@@ -1,0 +1,118 @@
+.image-with-text-section {
+  position: relative;
+  border-radius: var(--media-radius);
+  overflow: hidden;
+}
+
+.image-with-text-section:hover {
+  .image-with-text-section__image img {
+    transform: scale(1.06);
+    transition: transform 0.5s ease;
+  }
+}
+
+.image-with-text-section:not(:hover) {
+  .image-with-text-section__image img {
+    transform: scale(1);
+    transition: transform 0.5s ease;
+  }
+}
+
+.image-with-text-section__image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image-with-text-section__image img,
+.image-with-text-section__image svg{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-with-text-section__image .media--landscape{
+  padding-bottom: 56%;
+}
+
+.image-with-text-section__text-content-container {
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  left: 0;
+  top: 0;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.image-with-text-section__text-content {
+  padding: 10px;
+  max-width: 50rem;
+  height: fit-content;
+}
+.image-with-text-section__text-content a {
+  position: relative;
+}
+
+.image-with-text-section__heading a {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+
+.image-with-text-section__heading.h1 {
+  font-size: calc(var(--font-heading-scale) * 32px);
+  margin-bottom: 20px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.image-with-text-section__heading a:not(:hover) {
+  color: inherit;
+  transition: all 0.5s ease;
+}
+
+.image-with-text-section__heading * {
+  margin: 0px;
+}
+
+.image-with-text-section__text-content .button:after {
+  background: #f5f5f5;
+}
+
+.image-with-text-section__text-content .button:hover {
+  color: #d03c3f;
+}
+
+@media screen and (max-width:990px){
+  .custom-image-with-text .page-width{
+    padding: 0px 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .image-with-text-section__text-content {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .image-with-text-section__text-content a {
+    margin-top: 0;
+  }
+  .image-with-text-section__text-content-container {
+    justify-content: center;
+    align-items: center;
+  }
+  .image-with-text-section__image .media--landscape{
+    padding-bottom: 70%;
+  }
+  .image-with-text-section__heading.h1{
+    font-size: calc(var(--font-heading-scale)* 20px);
+    margin-bottom: 10px;
+  }
+}

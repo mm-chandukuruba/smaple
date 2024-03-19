@@ -1,0 +1,289 @@
+{{ 'shop-the-look-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign heading = section.settings.heading
+  assign colorScheme = section.settings.color_scheme
+  assign paddingTop = section.settings.padding_top
+  assign paddingBottom = section.settings.padding_bottom
+%}
+
+{% style %}
+  .padding-{{section.id}}{
+    padding-top: {{ paddingTop | divided_by:2 }}px;
+    padding-bottom: {{ paddingBottom | divided_by:2 }}px;
+  }
+
+  @media screen and (min-width:750px){
+    .padding-{{section.id}}{
+      padding-top: {{ paddingTop }}px;
+      padding-bottom: {{ paddingBottom }}px;
+    }
+  }
+
+  {% for blocks in section.blocks %}
+
+    .shop-the-look__dot-{{ blocks.id }}.primary-dot{
+      top: {{ blocks.settings.dot_1_top_position }}%;
+      left : {{ blocks.settings.dot_1_left_position }}%;
+    }
+
+    .shop-the-look__dot-{{ blocks.id }}.secondary-dot{
+      top: {{ blocks.settings.dot_2_top_position }}%;
+      left : {{ blocks.settings.dot_2_left_position }}%;
+    }
+
+  {% endfor %}
+{% endstyle %}
+
+<div class="shop-the-look padding-{{ section.id }}">
+  <div class="page-width color-{{ colorScheme.id }}">
+    {% if heading != blank %}
+      <h2 class="h1">{{ heading }}</h2>
+    {% endif %}
+    <div class="grid grid--1-col grid--3-col-desktop grid--3-col-tablet ">
+      {% for blocks in section.blocks %}
+        {% liquid
+          assign image = blocks.settings.image
+          assign imageMobile = blocks.settings.image_mobile
+          assign blockHeading = blocks.settings.block_heading
+          assign description = blocks.settings.description
+          assign buttonLabel = blocks.settings.button_label
+          assign buttonLink = blocks.settings.button_link
+          assign primaryProduct = blocks.settings.primary_product
+          assign seconadryProduct = blocks.settings.secondary_product
+          assign primaryProductDetails = all_products[primaryProduct]
+          assign seconadaryProductDetails = all_products[seconadryProduct]
+        %}
+
+        <div class="grid__item">
+          <div class="shop-the-look__container">
+            <div class="shop-the-look__image-dot-container">
+              <div class="shop-the-look__image-container">
+                {% if image != blank %}
+                  {% render 'responsive-image',
+                    mobileImage: imageMobile,
+                    desktopImage: image,
+                    class: 'media media--portrait'
+                  %}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag }}
+                {% endif %}
+              </div>
+              {% if primaryProduct != blank %}
+                <div class="shop-the-look__dot-{{ blocks.id }} shop-the-look__dot primary-dot">
+                  <div class="shop-the-look__product-container">
+                    <div class="shop-the-look__data color-{{ colorScheme.id }}">
+                      <a href="{{ primaryProductDetails.handle }}" class="shop-the-look__product-link">
+                        <img
+                          src="{{ primaryProductDetails.featured_image | image_url }}"
+                          class="shop-the-look__product-image"
+                        >
+                      </a>
+                      <div class="shop-the-look__product-details">
+                        <h2 class="h5">
+                          <a href="{{ primaryProductDetails.handle }}">
+                            {{- primaryProductDetails.title | truncate: 15 -}}
+                          </a>
+                        </h2>
+                        <p class="shop-the-look__price">{{ primaryProductDetails.price | money_with_currency }}</p>
+                        <p class="shop-the-look__compare-at-price">
+                          {{ primaryProductDetails.compare_at_price | money_with_currency }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+              {% if seconadryProduct != blank %}
+                <div class="shop-the-look__dot-{{ blocks.id }} shop-the-look__dot secondary-dot">
+                  <div class="shop-the-look__product-container">
+                    <div class="shop-the-look__data color-{{ colorScheme.id }}">
+                      <a href="{{ seconadaryProductDetails.handle }}" class="shop-the-look__product-link">
+                        <img
+                          src="{{ seconadaryProductDetails.featured_image | image_url }}"
+                          class="shop-the-look__product-image"
+                        >
+                      </a>
+                      <div class="shop-the-look__product-details">
+                        <h2 class="h5">
+                          <a href="{{ seconadaryProductDetails.handle }}">
+                            {{- seconadaryProductDetails.title | truncate: 15 -}}
+                          </a>
+                        </h2>
+                        <p class="shop-the-look__price">{{ seconadaryProductDetails.price | money_with_currency }}</p>
+                        <p class="shop-the-look__compare-at-price">
+                          {{ seconadaryProductDetails.compare_at_price | money_with_currency }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+            <div class="shop-the-look__text-content-container">
+              {% if blockHeading != blank %}
+                <h2 class="h3">{{ blockHeading }}</h2>
+              {% endif %}
+              {% if description != blank %}
+                <div class="shop-the-look__description">{{ description }}</div>
+              {% endif %}
+              {% if buttonLabel != blank %}
+                <a
+                  class="button"
+                  {% if buttonLink != blank %}
+                    href="{{ buttonLink }}"
+                  {% else %}
+                    aria-aria-disabled="true"
+                  {% endif %}
+                >
+                  <span>{{- buttonLabel -}}</span>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shop the look",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type":"color_scheme",
+      "id":"color_scheme",
+      "label":"Color scheme"
+    },
+    {
+      "type":"header",
+      "content":"Section padding"
+    },
+    {
+      "type": "range",
+      "label": "Padding top",
+      "id": "padding_top",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Padding bottom",
+      "id": "padding_bottom",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "grid",
+      "name": "Grid",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image",
+          "info": "Image for desktop"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image (Mobile)",
+          "id": "image_mobile"
+        },
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "block_heading"
+        },
+        {
+          "type": "richtext",
+          "label": "Description",
+          "id": "description"
+        },
+        {
+          "type": "text",
+          "label": "Button label",
+          "id": "button_label"
+        },
+        {
+          "type": "url",
+          "label": "Button link",
+          "id": "button_link"
+        },
+        {
+          "type": "range",
+          "label": "Primary dot left position",
+          "id": "dot_1_left_position",
+          "default": 9,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "info":"These values are useful for postioning the dot"
+        },
+        {
+          "type": "range",
+          "label": "Primary dot top position",
+          "id": "dot_1_top_position",
+          "default": 10,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "info":"These values are useful for postioning the dot"
+        },
+        {
+          "type": "product",
+          "label": "Select Product",
+          "id": "primary_product"
+        },
+        {
+          "type": "range",
+          "label": "Secondary dot left position",
+          "id": "dot_2_left_position",
+          "default": 10,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "info":"These values are useful for postioning the dot"
+        },
+        {
+          "type": "range",
+          "label": "Secondary Dot top position",
+          "id": "dot_2_top_position",
+          "default": 10,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "info":"These values are useful for postioning the dot"
+        },
+        {
+          "type": "product",
+          "label": "Select Product",
+          "id": "secondary_product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop the look"
+    }
+  ]
+}
+{% endschema %}

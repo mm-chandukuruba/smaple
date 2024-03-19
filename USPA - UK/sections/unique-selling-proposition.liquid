@@ -1,0 +1,129 @@
+{{ 'unique-selling-proposition-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign colorSheme = section.settings.color_scheme
+  assign paddingTop = section.settings.padding_top
+  assign paddingBottom = section.settings.padding_bottom
+%}
+
+{% style %}
+  .padding-{{section.id}}{
+    padding-top: {{ paddingTop | divided_by:2 }}px;
+    padding-bottom: {{ paddingBottom | divided_by:2 }}px;
+  }
+
+  @media screen and (min-width:750px){
+    .padding-{{section.id}}{
+      padding-top: {{ paddingTop }}px;
+      padding-bottom: {{ paddingBottom }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="usp-section padding-{{ section.id }}">
+  <div class="color-{{ colorSheme.id }}">
+    <div class="page-width usp-section__main-container">
+      <div class="grid grid--1-col grid--4-col-desktop grid--4-col-tablet center usp-section__container">
+        {% for blocks in section.blocks %}
+          {% liquid
+            assign svg = blocks.settings.svg
+            assign heading = blocks.settings.heading
+            assign description = blocks.settings.description
+          %}
+          <div class="grid__item center usp-section__icon-container">
+            <div class="usp-section__icon">
+              {% if svg != blank %}
+                {{ svg }}
+              {% else %}
+                {% render 'icon-youtube' %}
+              {% endif %}
+            </div>
+            <div>
+              {% if heading != blank %}
+                <h2 class="h3 usp-section__heading">{{ heading }}</h2>
+              {% endif %}
+              {% if description != blank %}
+                <div class="usp-section__description">{{ description }}</div>
+              {% endif %}
+            </div>
+          </div>
+        {% else %}
+          {% for i in (1..4) %}
+            <div class="grid__item center">
+              {{ 'product-' | append: i | placeholder_svg_tag }}
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "USP section",
+  "tag": "section",
+  "settings": [
+    {
+      "type":"color_scheme",
+      "id":"color_scheme",
+      "label":"Color Scheme",
+      "default":"background-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "label": "Padding Top",
+      "id": "padding_top",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Padding Bottom",
+      "id": "padding_bottom",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "USP",
+      "settings": [
+        {
+          "type": "html",
+          "label": "SVG",
+          "id": "svg"
+        },
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "heading",
+          "default": "Daily deals"
+        },
+        {
+          "type": "richtext",
+          "label": "Description",
+          "id": "description",
+          "default": "<p>return shipping costs unless the item received is damaged, defective, or incorrect.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "USP section"
+    }
+  ]
+}
+{% endschema %}

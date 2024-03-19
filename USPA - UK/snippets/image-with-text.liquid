@@ -1,0 +1,72 @@
+{% comment %}
+    Render an image with text.
+  {% render 'image-with-text',
+      desktopImage: OBJ,
+      mobileImage: OBJ,
+      desktopContainerAllignment: className,
+      textAllignment: classname,
+      heading: text,
+      preHeading: text,
+      buttonLabel: text,
+      buttonLink: url,
+      colorSchema: colorSchema,
+      imageShape: classname
+    %}
+    Accepts:
+    - desktopContainerAllignment: {String} Content Allignment for Desktop.
+    - textAllignmnet: {String} Text Allignment for Desktopr.
+    - mobileImage: {Object} Image object for mobile
+    - heading: {String} Heading
+    - desktopImage: {Object} Image object for desktop
+    - preHeading: {String} preHeading
+    - buttonLabel: Label for button,
+    - buttonLink: Url to the Button,
+    - colorSchema: colorSchema For content container,
+    - imageShape: shape of the whole container like square landscape
+{% endcomment %}
+
+{% liquid
+  if imageShape == "square"
+    assign className = "media media--square"
+  elsif imageShape == "landscape"
+    assign className = "media media--landscape"
+  endif
+%}
+
+
+<div class="image-with-text-section color-{{ colorSchema.id }}">
+  <div class="image-with-text-section__image">
+    {% if desktopImage != blank  %}
+      {% render 'responsive-image', desktopImage: desktopImage, mobileImage: mobileImage, class:className %}
+    {% else %}
+    <div class="{{ className }}">
+      {{ 'hero-apparel-1' | placeholder_svg_tag }}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="image-with-text-section__text-content-container {{ desktopContainerAllignment }}">
+    <div class="image-with-text-section__text-content {{ textAllignment }}">
+      {% if preHeading != blank %}
+        <ul class="pre-heading">
+          <li>{{ preHeading }}</li>
+        </ul>
+      {% endif %}
+      {% if heading != blank %}
+        <h2 class="h1 image-with-text-section__heading">{{ heading }}</h2>
+      {% endif %}
+      {% if buttonLabel != blank %}
+        <a
+          class="button"
+          {% if buttonLink != blank %}
+            href="{{ buttonLink }}"
+          {% else %}
+            role="link" aria-disabled="true"
+          {% endif %}
+        >
+          <span>{{- buttonLabel -}}</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

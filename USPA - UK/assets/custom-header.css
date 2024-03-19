@@ -1,0 +1,11 @@
+nav.custom-header__navigation-links {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+.custom-header__navigation-links__container{
+  display: flex;
+	list-style: none;
+	gap: 10px;
+}

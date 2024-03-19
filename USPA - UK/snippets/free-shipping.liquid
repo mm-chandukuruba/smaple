@@ -1,0 +1,36 @@
+{% comment %}
+Uses : {%  render 'free-shipping'  %}
+{% endcomment %}
+<div class="shipping-bar">
+  {% liquid
+    assign free_shipping = settings.free_shipping | times: 1
+    assign cart_price = cart.total_price | divided_by: 100
+    assign change = free_shipping | minus: cart_price
+    assign perc_change = 100
+    if change > 0
+      assign perc_change = change | times: 100 | divided_by: free_shipping
+      assign perc_change = 100 | minus: perc_change
+    endif
+  %}
+  {% if perc_change == 100 %}
+    <div class="shipping-bar__title font-bold text-md cart-drawer__black">extra for Free shipping!</div>
+  {% else %}
+    <div class="shipping-bar__message cart-drawer__black h6">
+      <p>
+        Spent more <strong>{{ change | times: 100 | money }}</strong> extra for Free shipping!
+      </p>
+    </div>
+  {% endif %}
+  <div class="shipping-bar__container">
+    <div class="shipping-bar__filled" style="width: {{ perc_change | string | append: '%' }}">
+      <div class="shipping__icon" style="left: {{ perc_change | string | append: '%' }}">
+        
+      </div>
+    </div>
+  </div>
+  {% if perc_change == 100 %}
+    <div class="shipping-bar__message cart-drawer__black h6">
+      <p><strong>Yay!!</strong> you unlocked <strong>free shipping</strong></p>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,318 @@
+{{ 'section-custom-collections-list.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign paddingTop = section.settings.padding_top
+  assign paddingBottom = section.settings.padding_bottom
+  assign colorScheme = section.settings.color_scheme
+  assign buttonLabel = section.settings.section_button_text
+  assign buttonLink = section.settings.section_button_link
+  assign heading = section.settings.section_heading
+  assign contentAllignment = section.settings.alignment_position
+  assign textAllignment = section.settings.text_alignment
+%}
+
+{% style %}
+  .padding-{{ section.id }} {
+      padding-top: {{ paddingTop | divided_by: 2  }}px;
+      padding-bottom: {{ paddingBottom | divided_by: 2 }}px;
+    }
+
+    @media (min-width: 750px) {
+      .padding-{{ section.id }} {
+        padding-top: {{ paddingTop }}px;
+        padding-bottom: {{ paddingBottom }}px;
+      }
+    }
+{% endstyle %}
+
+{% capture slider-options-data %}
+  {
+    "autoplay" : {{ section.settings.slider_autoplay }},
+    "interval" : {{ section.settings.slider_autoplay_duration | times: 1000 }},
+    "type" : "{{ section.settings.slide_animation }}",
+    "pagination": {{ section.settings.slide_dots }},
+    "gap": "20px",
+    "perPage": 5,
+    "arrows" : {{ section.settings.slide_arrows }},
+    "rewind" : {{ section.settings.infinite_scroll }},
+    "breakpoints": {
+    "750": {
+      "perPage": 2,
+      "gap":"10px"
+    }
+    }
+  }
+{% endcapture %}
+
+<div class="collections-list padding-{{ section.id }}">
+  <div class="page-width">
+    <div class="collections-list__heading-section color-{{ colorScheme }}">
+      <h2 class="h1">{{ heading }}</h2>
+      <div>
+        {% if buttonLabel %}
+          <a
+            class="button"
+            {% if buttonLink == blank %}
+              role="link" aria-disabled="true"
+            {% else %}
+              href="{{ buttonLink }}"
+            {% endif %}
+          >
+            <span>{{ buttonLabel }}</span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+    <splider-component>
+      <section class="splide" aria-label="Testimonial Splide" data-slider-settings='{{ slider-options-data }}'>
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for block in section.blocks %}
+              {% liquid
+                assign desktopImage = block.settings.desktop_image
+                assign mobileImage = block.settings.mobile_image
+                assign blockHeading = block.settings.heading
+                assign blockButtonLabel = block.settings.button_text
+                assign blockButtonLink = block.settings.button_link
+              %}
+
+              <li class="splide__slide collections-list__slide color-{{ colorScheme.id }}">
+                <div class="collections-list__image">
+                  {% if desktopImage != blank %}
+                    {% render 'responsive-image',
+                      desktopImage: desktopImage,
+                      mobileImage: mobileImage,
+                      class: 'media media--portrait'
+                    %}
+                  {% else %}
+                    <div class="media media--portait">
+                      {{ 'collection-1' | placeholder_svg_tag }}
+                    </div>
+                  {% endif %}
+                  </div>
+                <div class="collections-list__content {{ contentAllignment}}">
+                  <div class="{{ textAllignment }}">
+                    {% if blockHeading != blank %}
+                      <h2 class="h2 collections-list__heading">
+                        <a href="{{ blockButtonLink }}">{{ blockHeading }}</a>
+                      </h2>
+                    {% endif %}
+
+                    {% if blockButtonLabel %}
+                      <a
+                        class="button button--secondary"
+                        {% if blockButtonLink == blank %}
+                          role="link" aria-disabled="true"
+                        {% else %}
+                          href="{{ blockButtonLink }}"
+                        {% endif %}
+                      >
+                        <span>{{ blockButtonLabel }}</span>
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </section>
+    </splider-component>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Collections List",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section heading",
+      "default": "Our Customers Review"
+    },
+    {
+      "type": "text",
+      "id": "section_button_text",
+      "label": "Section button text",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "section_button_link",
+      "label": "Section button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme"
+    },
+    {
+      "type" : "header",
+      "content" : "Slider settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_autoplay",
+      "label": "Slide autoplay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_dots",
+      "label": "Show slide dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_arrows",
+      "label": "Show slide arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_scroll",
+      "label": "Infinite scroll",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slider_autoplay_duration",
+      "label": "Slider autoplay duration",
+      "min" : 1,
+      "step":1,
+      "max" : 10,
+      "default": 3,
+      "unit": "sec"
+    },
+    {
+      "type" : "select",
+      "id": "slide_animation",
+      "label" : "Slide animation",
+      "options" : [
+        {
+          "value" : "loop",
+          "label" : "Loop"
+        },
+        {
+          "value" : "fade",
+          "label" : "Fade"
+        },
+        {
+          "value" : "slide",
+          "label" : "Slide"
+        }
+      ]
+    },
+    {
+      "type" : "header",
+      "content" : "Alignment Settings"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type" : "select",
+      "id" : "alignment_position",
+      "label" : "Desktop content position",
+      "options" : [
+        {
+          "value" : "top-center",
+          "label" : "Top center"
+        },
+        {
+          "value" : "middle-center",
+          "label" : "Middle center"
+        },
+        {
+          "value" : "bottom-center",
+          "label" : "Bottom center"
+        }
+      ],
+      "default": "middle-center"
+    },
+    {
+      "type" : "header",
+      "content" : "Section padding settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Section padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Section padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection-blocks",
+      "name": "Collection blocks",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Image (Mobile)"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Person Name"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Section button text",
+          "default": "View All"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Section button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Collections List"
+    }
+  ]
+}
+{% endschema %}

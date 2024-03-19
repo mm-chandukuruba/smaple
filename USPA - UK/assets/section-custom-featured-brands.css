@@ -1,0 +1,14 @@
+.featured-brands__section{
+  padding:0px 20px;
+}
+
+.featured-brands__grid{
+  display: flex;
+  overflow-x: auto;
+  justify-content: flex-start;
+  gap: 70px;
+}
+
+.featured-brands__section{
+  padding: 0px 40px;
+}

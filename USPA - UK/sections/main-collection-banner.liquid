@@ -1,0 +1,57 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{% assign mobile_image = collection.metafields.custom.mobile_banner | default: collection.image.src %}
+
+
+<div class="collection-hero page-width{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+  <div class="collection-hero__inner  {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {%- if section.settings.show_collection_image and collection.image -%}
+      <div class="collection-hero__image-container media gradient">
+        {% render "responsive-image", desktopImage:collection.image, mobileImage: mobile_image %}
+      </div>
+    {%- endif -%}
+    <div class="collection-hero__text-wrapper page-width">
+      <h1 class="collection-hero__title center">
+        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+        {{- collection.title | escape -}}
+      </h1>
+
+      {%- if section.settings.show_collection_description -%}
+        <div class="collection-hero__description rte center">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    }
+  ]
+}
+{% endschema %}

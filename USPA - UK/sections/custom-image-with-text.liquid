@@ -1,0 +1,203 @@
+{{ 'custom-image-with-text-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign cardShape = section.settings.card_shap
+  assign paddingTop = section.settings.padding_top
+  assign paddingBottom = section.settings.padding_bottom
+%}
+
+{% style %}
+  .padding-{{section.id}}{
+    padding-top: {{ paddingTop | divided_by:2 }}px;
+    padding-bottom: {{ paddingBottom | divided_by:2 }}px;
+  }
+  @media screen and (min-width:750px){
+    .padding-{{section.id}}{
+      padding-top: {{ paddingTop | divided_by:2 }}px;
+      padding-bottom: {{ paddingBottom | divided_by:2 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="custom-image-with-text padding-{{ section.id }}">
+  <div class="page-width">
+    <div class="grid grid--1-col grid--2-col-tablet grid--2-col-desktop">
+      {% for blocks in section.blocks %}
+        {% liquid
+          assign desktopImage = blocks.settings.image
+          assign mobileImage = blocks.settings.image_mobile
+          assign desktopAllignment = blocks.settings.desktop_content_allignment
+          assign textAllignment = blocks.settings.desktop_text_allignment
+          assign blockHeading = blocks.settings.block_heading
+          assign preHeading = blocks.settings.pre_heading
+          assign buttonLabel = blocks.settings.button_label
+          assign buttonLink = blocks.settings.button_link
+          assign colorSchema = blocks.settings.color_scheme
+        %}
+        <div class="grid__item animate--zoom-in">
+          {% render 'image-with-text',
+            desktopImage: desktopImage,
+            mobileImage: mobileImage,
+            desktopContainerAllignment: desktopAllignment,
+            textAllignment: textAllignment,
+            heading: blockHeading,
+            preHeading: preHeading,
+            buttonLabel: buttonLabel,
+            buttonLink: buttonLink,
+            colorSchema: colorSchema,
+            imageShape: cardShape
+          %}
+        </div>
+      {% else %}
+        {% for i in (1..2) %}
+          <div class="grid__item">
+            {{ 'hero-apparel-' | append: i | placeholder_svg_tag }}
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Image with Text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "label": "Card shape",
+      "id": "card_shap",
+      "default": "sqaure",
+      "options": [
+        {
+          "label": "Sqaure ",
+          "value": "sqaure"
+        },
+        {
+          "label": "Landscape",
+          "value": "landscape"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "label": "Padding top",
+      "id": "padding_top",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Padding bottom",
+      "id": "padding_bottom",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collections",
+      "name": "Collections",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image ",
+          "id": "image",
+          "info": "Image for Desktop"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image (Mobile)",
+          "id": "image_mobile",
+          "info": "Image for Mobile"
+        },
+        {
+          "type": "text",
+          "label": "Pre heading",
+          "id": "pre_heading",
+          "default": "Women's collections"
+        },
+        {
+          "type": "richtext",
+          "label": "Heading",
+          "id": "block_heading",
+          "default": "<p>Women's Clothing Collections</p>"
+        },
+        {
+          "type": "text",
+          "label": "Button Label",
+          "id": "button_label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "label": "Button Link",
+          "id": "button_link"
+        },
+        {
+      "type": "select",
+      "label": "Desktop Content Allignment",
+      "id": "desktop_content_allignment",
+      "default":"middle-center",
+      "options": [
+        {
+          "label": "Top",
+          "value": "top-center"
+        },
+        {
+          "label": "Middle",
+          "value": "middle-center"
+        },
+        {
+          "label": "Bottom",
+          "value": "bottom-center"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "label": "Desktop Text Allignment",
+      "id": "desktop_text_allignment",
+      "default": "center",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Center",
+          "value": "center"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ]
+    },
+    {
+      "type":"color_scheme",
+      "id":"color_scheme",
+      "label":"Color Scheme",
+      "default":"background-1"
+    }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Image with Text"
+    }
+  ]
+}
+{% endschema %}

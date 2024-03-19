@@ -1,0 +1,212 @@
+{{ "custom-blog-post.css" |  asset_url |  stylesheet_tag }}
+{{ "custom-blog-card-snippet.css" |  asset_url |  stylesheet_tag }}
+
+{% liquid
+  assign blogPost = section.settings.select_blog.articles
+  assign paddingTop = section.settings.padding_top
+  assign paddingBottom = section.settings.padding_bottom
+  assign heading =  section.settings.heading
+  assign buttonLabel = section.settings.button_label 
+  assign buttonLink = section.settings.button_link    
+	assign colorScheme = section.settings.color_scheme
+%}
+
+{% capture slideOptions %}
+	{
+    "autoplay" : {{ section.settings.slider_autoplay }},
+    "interval" : {{ section.settings.slider_autoplay_duration | times: 1000 }},
+    "type" : "{{ section.settings.slide_animation }}",
+    "pagination": {{ section.settings.slide_dots }},
+    "gap": "20px",
+    "perPage": 2,
+    "arrows" : {{ section.settings.slide_arrows }},
+    "rewind" : {{ section.settings.infinite_scroll }},
+    "breakpoints": {
+    "750": {
+      "perPage": 1,
+			"destroy": "true"
+    }
+    }
+  }
+{% endcapture %}
+
+{% style %}
+
+	.padding-{{section.id}}{
+		padding-top: {{ paddingTop |  divided_by: 2 }}px;
+		padding-bottom: {{ paddingBottom |  divided_by: 2 }}px;
+	}
+
+	@media screen and (min-width:768px){
+		.padding-{{section.id}}{
+			padding-top: {{ paddingTop  }}px;
+			padding-bottom: {{ paddingBottom }}px;
+		}
+	}
+
+{% endstyle %}
+
+<div class="custom-blog-post padding-{{section.id}}">
+	<div class="page-width color-{{ colorScheme.id }}">
+		<div class="custom-blog-post__heading-container">
+			{% if heading != blank %}
+				<h2 class="h1">{{heading}}</h2>
+			{% endif %}
+			<div>
+        {% if buttonLabel %}
+          <a
+            class="button"
+            {% if buttonLink == blank %}
+              role="link" aria-disabled="true"
+            {% else %}
+              href="{{ buttonLink }}"
+            {% endif %}
+          >
+            <span>{{ buttonLabel }}</span>
+          </a>
+        {% endif %}
+      </div>
+		</div>
+		<splider-component>
+      <section class="splide" aria-label="Testimonial Splide" data-slider-settings='{{ slideOptions }}'>
+        <div class="splide__track">
+          <ul class="splide__list">
+						{% for articles in blogPost %}
+
+							<li class="splide__slide">
+								{% render "custom-blog-card" , blog:articles %}
+							</li>
+
+						{% else %}
+							{% for i in (1..3) %}
+
+								<li class="splide__slide">
+									{{ 'blog-apparel-' | append:i | placeholder_svg_tag: 'blog-placeholder-svg' }}
+								</li>
+
+							{% endfor %}
+						{% endfor %}
+					</ul>
+				</div>
+			</section>
+		</splider-component>
+	</div>
+</div>
+
+{% schema %}
+{
+    "name": "Custom blog post",
+    "tag": "section",
+    "settings": [
+    {
+        "type": "text",
+        "label": "heading",
+        "id": "heading",
+        "default": "Let You Know"
+    },
+    {
+        "type":"text",
+        "label":"Button label",
+        "id":"button_label"
+    },
+    {
+        "type": "url",
+        "label": "Button link",
+        "id": "button_link"
+    },
+    {
+        "type": "blog",
+        "label": "Select Blog",
+        "id": "select_blog"
+    },
+    {
+        "type":"color_scheme",
+        "label": "Color scheme",
+        "id":"color_scheme"
+    },
+		{
+      "type" : "header",
+      "content" : "Slider settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_autoplay",
+      "label": "Enable autoplay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_dots",
+      "label": "Show slide dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_arrows",
+      "label": "Show slide arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_scroll",
+      "label": "Enable infinite scroll",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slider_autoplay_duration",
+      "label": "Slider autoplay duration",
+      "min" : 1000,
+      "step":1000,
+      "max" : 5000,
+      "default": 1000,
+      "unit": "ms"
+    },
+    {
+      "type" : "select",
+      "id": "slide_animation",
+      "label" : "Slide animation",
+      "options" : [
+        {
+          "value" : "loop",
+          "label" : "Loop"
+        },
+        {
+          "value" : "fade",
+          "label" : "Fade"
+        },
+        {
+          "value" : "slide",
+          "label" : "Slide"
+        }
+      ]
+    },
+    {
+        "type": "range",
+        "label": "Padding top",
+        "id": "padding_top",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px"
+    },
+    {
+        "type": "range",
+        "label": "Padding bottom",
+        "id": "padding_bottom",
+        "default": 20,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px"
+    }
+    ],
+    "presets": [
+    {
+        "name": "Custom blog post"
+    }
+    ]
+}
+{% endschema %}
+

@@ -1,0 +1,54 @@
+.custom-collections-tab__wrapper{
+	display: flex;
+	align-items: center;
+	background: #f5f8fa;
+	border-radius: 2rem;
+	max-width: 95rem;
+	margin: 0 auto 3.5rem;
+	justify-content: center;
+	list-style-type: none;
+}
+
+.custom-collections-tab.active{
+	background: #e1e6eb;
+	border-radius: 2rem;
+	color: #111314;
+}
+
+.custom-collections-tab__product-container{
+	position: relative;
+}
+
+.collections-tab__content.active{
+	opacity: 1;
+	visibility: visible;
+	position: relative;
+}
+
+.collections-tab__content{
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+}
+
+.custom-collections-tab{
+	width: 20%;
+	cursor: pointer;
+	text-align: center;
+	font-size: 1.2rem;
+	letter-spacing: .065rem;
+	transition: background .2s ease;
+	color: #565d66;
+}
+
+.custom-collections-tab__container{
+	background: linear-gradient(to top, #e7f1ff 60%, transparent 0);
+}
+
+.custom-collections-tab__heading{
+	font-size: 4rem;
+	margin: 0px;
+	font-weight: 400;
+	text-align: center;
+	text-transform: capitalize;
+}

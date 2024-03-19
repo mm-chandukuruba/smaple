@@ -1,0 +1,102 @@
+
+{{ "custom-dealer.css" |  asset_url |  stylesheet_tag }}
+<script src={{ "custom-dealer.js" |  asset_url }} defer="defer"></script>
+
+{% style %}
+  .padding-{{ section.id }}{
+    padding-top: {{ paddingTop | divided_by:2 }}px;
+    padding-bottom: {{ paddingBottom | divided_by:2 }}px;
+  }
+
+  @media screen and (min-width:750px){
+    .padding-{{section.id}}{
+      padding-top: {{ paddingTop }}px;
+      padding-bottom: {{ paddingBottom }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="padding-{{ section.id }}">
+	<div class="page-width">
+		<div class="container">
+			<div class="container__inner">
+				<h2 class="h2 custom-dealer__heading">Store Locator</h2>
+				<div class="filter">
+					<label>
+						<span>Category</span>
+						<select name="selectcatid" id="slcatid" onchange="findstatelist();">
+							<option value="" disabled selected>Select Category {% render "icon-caret" %}</option>
+						</select>
+					</label>
+					<label id="slstatelist">
+						<span>State</span>
+						<select name="selectState" id="slstate" onchange="findcitylist();">
+								<option value="" disabled selected>Select State {% render "icon-caret" %}</option>
+						</select>
+					</label>
+					<label id="citylist">
+						<span>City</span>
+						<select name="selectCity" id="slcity">
+								<option value="" disabled selected>Select City {% render "icon-caret" %}</option>
+						</select>
+					</label>
+					<label>
+						<button type="button" id="submitButton">Show results</button>
+					</label>
+					<div id="loader" class="frmloader"><span></span></div>
+				</div>
+			</div>
+			<div class="address-list">
+				<div class="list">
+					<div class="box">
+						<h3>KANISHKA ENTERPRISES</h3>
+						<div class="info">
+							<p class="address">AMBEDKAR CHOWK, DEOGHAR - 814112</p>
+							<p>
+								<span>DEOGHAR, Jharkhand</span>
+								Phone: <strong>9709700526</strong>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "Dealer section",
+	"settings": [
+			{
+				"type": "header",
+				"content":"Section Padding"
+			},
+			{
+      "type": "range",
+      "label": "Padding Top",
+      "id": "padding_top",
+      "default": 30,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Padding Bottom",
+      "id": "padding_bottom",
+      "default": 30,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    }
+		],
+	"presets": [
+		{
+			"name": "Dealer section"
+		}
+	]
+}
+{% endschema %}

@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-account",
+      "settings": {
+        "color_scheme": "",
+        "image": "shopify:\/\/shop_images\/Group_1000002412.webp",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

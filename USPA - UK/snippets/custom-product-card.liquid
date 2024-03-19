@@ -1,0 +1,166 @@
+
+{% liquid
+  assign currentProduct = product.selected_or_first_available_variant
+  assign primaryImage = currentProduct.featured_image | default: product.featured_image
+  if show_secondary_image
+  assign secondaryImage = product.images[1] | default: product.featured_image
+  else 
+  assign secondaryImage = currentProduct.featured_image | default: product.featured_image
+  endif
+  assign price = currentProduct.price
+  assign compareAtPrice = currentProduct.compare_at_price
+  assign tags = product.tags
+  assign venderName = product.vendor
+  assign availableQuantity = currentProduct.inventory_quantity
+  assign title = product.title
+  assign handle = product.url
+  assign discountPercentage = compareAtPrice | minus: price | times: 100 | divided_by: compareAtPrice | round: 2
+  if media_aspect_ratio == "square"  
+  assign className = "media media--square" 
+  else 
+  assign className = "media media--portrait" 
+  endif
+  assign product_form_id = "product-form-" | append: section_id 
+%}
+
+<product-card class="product-card-wrapper animate--fade-in" data-product-handle="{{ product.handle }}" data-section-id="{{ section_id }}">
+  <a href="{{ handle }}">
+    <div class="product-card__image-container">
+      <div class="product-card__primary-image">
+        {% render 'responsive-image',
+          class:className ,
+          mobileImage: primaryImage,
+          desktopImage: primaryImage
+        %}
+      </div>
+      <div class="product-card__secondary-image">
+        {% render 'responsive-image',
+          class: className,
+          mobileImage: secondaryImage,
+          desktopImage: secondaryImage
+        %}
+      </div>
+      <div class="product-card__tags-container">
+        <div>
+          {% if discountPercentage != blank %}
+            <div class="badge discount-badge">{{ discountPercentage }}% off</div>
+          {% endif %}
+          {% for tag in tags %}
+            {% assign newTag = tag | split: 'tag-' | first %}
+            {% if newTag == 'New' %}
+              <div class="badge new-badge">{{ newTag }}</div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if show_quick_add %}
+          <div class="quick-look-button">
+            <product-form 
+              class="product-form"
+              data-hide-errors="{{ gift_card_recipient_feature_active }}"
+              data-section-id="{{ section.id }}"
+              >
+              {%- form 'product',
+                product,
+                id: product_form_id,
+                class: 'form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+                -%}
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}"
+                  {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+                    disabled
+                  {% endif %}
+                  class="product-variant-id"
+                >
+                <button class="button"
+                  id="ProductSubmitButton-{{ section_id }}"
+                  type="submit"
+                  name="add"
+                  class="product-form__submit button button--full-width button--primary"
+                  {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+                    disabled
+                  {% endif %}
+                  >
+                    <span class="quick-look-button_span">Add to cart</span>
+                    <svg viewBox="0 0 511.999 511.999">
+                      <path d="M508.745,246.041c-4.574-6.257-113.557-153.206-252.748-153.206S7.818,239.784,3.249,246.035
+                      c-4.332,5.936-4.332,13.987,0,19.923c4.569,6.257,113.557,153.206,252.748,153.206s248.174-146.95,252.748-153.201
+                      C513.083,260.028,513.083,251.971,508.745,246.041z M255.997,385.406c-102.529,0-191.33-97.533-217.617-129.418
+                      c26.253-31.913,114.868-129.395,217.617-129.395c102.524,0,191.319,97.516,217.617,129.418
+                      C447.361,287.923,358.746,385.406,255.997,385.406z"></path>
+                      <path d="M255.997,154.725c-55.842,0-101.275,45.433-101.275,101.275s45.433,101.275,101.275,101.275
+                      s101.275-45.433,101.275-101.275S311.839,154.725,255.997,154.725z M255.997,323.516c-37.23,0-67.516-30.287-67.516-67.516
+                      s30.287-67.516,67.516-67.516s67.516,30.287,67.516,67.516S293.227,323.516,255.997,323.516z"></path>
+                    </svg>
+                    {%- render 'loading-spinner' -%}
+                </button>
+              {%- endform -%}
+            </product-form>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    </a>
+    <div class="product-card__details">
+      {% unless product.has_only_default_variant %}
+        <div class="product-card__options">
+          {% for product_option in product.options_with_values %}
+            <div class="product-card__option">
+              {% if product_option.name == 'Color' or product_option.name == 'color' %}
+                <ul>
+                  {% for option_value in product_option.values %}
+                    <li class="item-swatch">
+                      <input
+                        type="radio"
+                        name="option-{{ product.id }}"
+                        value="{{ option_value }}"
+                        data-type="option"
+                        id="{{ handle |  handleize }}-{{ option_value }}"
+                        {% if product_option.selected_value == option_value %}
+                          checked
+                        {% endif %}
+                      >
+                      <label data-value="{{ option_value }}" for="{{ handle |  handleize }}-{{ option_value }}">{{ option_value }}</label>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endunless %}
+
+      <div class="product-card__money-details">
+        {% if show_vendor %}
+          <p class="product-card__vender-name">{{ venderName }}</p>
+        {% endif %}
+        <h3 class="h3 product-card__title">
+          <a href="{{ handle }}">{{ title }}</a>
+        </h3>
+        {% if show_rating %}
+          <div class='jdgm-widget jdgm-preview-badge'>
+          {{ product.metafields.judgeme.badge }}
+        </div>
+        {% endif %}
+        <div class="product-card__price-container">
+          <h3 class="product-card__price">{{ price | money_with_currency }}</h3>
+          <small class="product-card__compare-at-price">{{ compareAtPrice | money_with_currency }}</small>
+        </div>
+        {% if availableQuantity <= 50 %}
+        <p class="product-card__availability {% if availableQuantity >= 20 %}high {% elsif availableQuantity > 0 %}low {%  else %} small-hide medium-hide large-up-hide {% endif %}">
+          {% if availableQuantity <= 50 %}
+            {{ availableQuantity }} in stock
+          {% elsif availableQuantity <= 20 and availableQuantity > 0 %}
+            only {{ availableQuantity }} left
+          {% endif %}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  <script>
+    {{ product.variants | json}}
+  </script>
+</product-card>

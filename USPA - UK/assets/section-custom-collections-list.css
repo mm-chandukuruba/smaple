@@ -1,0 +1,138 @@
+.collections-list {
+  position: relative;
+}
+
+.collections-list__heading-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: inherit;
+}
+
+.collections-list__heading-section .h1{
+  color: #000 !important;
+}
+
+@media screen and (min-width: 750px) {
+  .collections-list__heading-section {
+    flex-direction: row;
+    background: none;
+    margin-bottom: 30px;
+  }
+}
+
+.collections-list__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: 15px;
+}
+
+.collections-list__content .button:after{
+  background: var(--color-foreground);
+  background-color: white;
+}
+
+.collections-list__content .button:hover{
+  color: #d03c3f;
+}
+
+.collections-list__content .button{
+  background: transparent;
+  color: var(--color-foreground);
+  border: 1px solid white;
+}
+
+.collections-list__slide{
+  border-radius: var(--media-radius);
+  overflow: hidden;
+}
+
+.collections-list__image .media--portait img,
+.collections-list__image .media--portait svg{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.collections-list__slide img {
+  overflow: hidden;
+  transition: transform var(--duration-medium)  ease-in-out;
+}
+
+.collections-list__slide:hover img {
+  transform: scale(1.06);
+}
+
+.collections-list__heading{
+  font-weight: 500;
+}
+
+.collections-list .splide__arrow--next {
+  right: 0;
+  width: 50px;
+  height: 50px;
+  opacity: 1;
+  background-color: #d03c3f;
+  border-radius: 50% 0 0 50%;
+}
+
+.collections-list .splide__arrow svg {
+  fill: #fff;
+  height: 1.2em;
+  width: 1.2em;
+  z-index: 2;
+}
+
+.collections-list .splide__arrow--prev {
+  left: 0;
+  width: 50px;
+  height: 50px;
+  opacity: 1;
+  background-color: #d03c3f;
+  border-radius: 0 50% 50% 0;
+}
+
+.collections-list .splide__arrow--prev:disabled,
+.collections-list .splide__arrow--next:disabled {
+  display: none;
+}
+
+.collections-list .splide__arrow--prev::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, transparent 50%, #000 50%);
+  background-size: 200% 100%;
+  transition: background-position 0.3s ease-in-out;
+  overflow: hidden;
+  border-radius: 0 50% 50% 0;
+}
+.collections-list .splide__arrow--next:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, transparent 50%, #000 50%);
+  background-size: 200% 100%;
+  transition: background-position 0.3s ease-in-out;
+  overflow: hidden;
+  border-radius: 50% 0 0 50%;
+}
+
+.collections-list .splide__arrow--prev:hover::before {
+  background-position: -100% 0;
+}
+
+.collections-list .splide__arrow--next:hover::before {
+  background-position: -100% 0;
+}

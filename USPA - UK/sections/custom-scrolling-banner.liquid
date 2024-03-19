@@ -1,0 +1,170 @@
+{{'section-custom-scrolling-banner.css' |  asset_url |  stylesheet_tag}}
+
+{% liquid
+	assign paddingTop = section.settings.padding_top
+	assign paddingBottom = section.settings.padding_bottom
+	assign colorScheme = section.settings.color_scheme 
+%}
+
+{%  style  %}
+.padding-{{section.id}} {
+	padding-top: {{ paddingTop | divided_by: 2 }}px;
+	padding-bottom: {{ paddingBottom | divided_by: 2 }}px;
+}
+
+@media screen and (min-width: 750px) {
+	.padding-{{section.id}} {
+			padding-top: {{ paddingTop }}px;
+			padding-bottom: {{ paddingBottom }}px;
+	}
+}
+{% endstyle %}
+
+
+<div class="scrolling-banner padding-{{	section.id }}">
+	<div class="scrolling-banner__scrolling-wrapper">
+		<div class="scrolling-banner__scrolling-items-wrapper">
+			{% for rotation in (1..3) %}
+				{% for block in section.blocks %}
+
+					{% liquid
+						assign buttonLink = block.settings.button_url
+						assign icon = block.settings.scrolling_item_icon
+						assign text = block.settings.scrolling_text 
+						assign displayButton = block.settings.display_button 
+						assign buttonText = block.settings.button_text 
+					%}
+						<div class="scrolling-banner__scrolling-item">
+							<div class="scrolling-banner__icon-wrapper">
+								{% if icon %}
+									{{ icon }}
+								{% else %}
+									{% render 'icon-unavailable' %}
+								{% endif %}
+							</div>
+							{% if text %}
+								<div class="scrolling-banner__scrolling-text">
+									{{ text }}
+								</div>
+							{% endif %}
+								{% if buttonText !=blank %}
+									{% if displayButton == "display-as-button" %}
+										<a class="button" 
+											{% if buttonLink %}
+												href="{{ buttonLink }}" 
+											{% else %}
+													aria-disabled="true"
+											{% endif %} >
+												<span>
+													{{ buttonText }}
+												</span>
+										</a>
+									{% elsif displayButton == "display-as-text" %}
+										<a class="scrolling-banner__plain-button"
+										 {% if buttonLink %}
+											href="{{ buttonLink }}" 
+											{% else %}
+												aria-disabled="true"
+											{% endif %}>
+												<span>
+													{{ buttonText }}
+												</span>
+										</a>
+									{% endif %}
+								{% endif %}
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+	</div>
+</div>
+
+
+{% schema %}
+{
+	"name": "Custom scrolling banner",
+	"tag": "section",
+	"class": "section",
+	"settings": [
+			{
+				"type":"color_scheme",
+				"id":"color_scheme",
+				"label":"Color Scheme"
+			},
+			{
+				"type": "header",
+				"content": "Section padding"
+			},
+			{
+				"type": "range",
+				"id": "padding_top",
+				"label": "Padding top",
+				"min": 0,
+				"max": 100,
+				"step": 2,
+				"unit": "px",
+				"default": 20
+			},
+			{
+				"type": "range",
+				"id": "padding_bottom",
+				"label": "Padding bottom",
+				"min": 0,
+				"max": 100,
+				"step": 2,
+				"unit": "px",
+				"default": 20
+			}   
+	],
+	"blocks": [
+		{
+			"name": "Scrolling item",
+			"type": "scrolling-item",
+			"settings": [
+					{
+						"type": "html",
+						"id": "scrolling_item_icon",
+						"label": "Icon"
+					},
+					{
+						"type": "richtext",
+						"id": "scrolling_text",
+						"label": "Text",
+						"default": "<p>Scrolling text</p>"
+					},
+					{
+						"type": "select",
+						"id": "display_button",
+						"label": "Button/Text",
+						"options": [
+								{
+									"label": "Button",
+									"value": "display-as-button"
+								},
+								{
+									"label": "Text",
+									"value": "display-as-text"
+								}
+						]
+					},
+					{
+						"type": "text",
+						"id": "button_text",
+						"label": "Button text",
+						"default": "Button text"
+					},
+					{
+						"type": "url",
+						"id": "button_link",
+						"label": "Button link"
+					}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Custom scrolling banner"
+		}
+	]
+	}
+{% endschema %}

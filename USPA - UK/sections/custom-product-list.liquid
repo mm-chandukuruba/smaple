@@ -1,0 +1,202 @@
+{{ 'custom-product-list-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign heading = section.settings.heading
+  assign headingSize = section.settings.heading_size
+  assign paddingTop = section.settings.padding_top
+  assign paddingBottom = section.settings.padding_bottom
+  assign productList = section.settings.select_products
+  assign colorScehme = section.settings.color_scheme
+  assign buttonLabel = section.settings.button_label
+  assign buttonLink = section.settings.button_link
+%}
+
+{% style %}
+  .padding-{{section.id}}{
+    padding-top: {{ paddingTop |divided_by:2 }}px;
+    padding-bottom: {{ paddingBottom |divided_by:2 }}px;
+  }
+
+  @media screen and (min-width:750px){
+    .padding-{{section.id}}{
+      padding-top: {{ paddingTop |divided_by:2 }}px;
+      padding-bottom: {{ paddingBottom |divided_by:2 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="custom-product-list padding-{{ section.id }} color-{{ colorScehme.id }}">
+  <div class="page-width">
+    <div class="custom-product-list__heading">
+      {% if heading != blank %}
+        <h2 class="{{ headingSize }}">{{ heading }}</h2>
+      {% endif %}
+      {% if buttonLabel != blank %}
+        <div>
+        <a
+          class="button"
+          {% if buttonLink != blank %}
+            href="{{ buttonLink }}"
+          {% else %}
+            aria-disabled="true"
+          {% endif %}
+        >
+          <span>{{- buttonLabel -}}</span>
+        </a>
+        </div>
+      {% endif %}
+    </div>
+    <div class="grid grid--2-col grid--3-col-tablet grid--4-col-desktop">
+      {% for product in productList %}
+        <div class="grid__item">
+          {% render 'custom-product-card',
+            product: product,
+            media_aspect_ratio: section.settings.image_ratio,
+            show_secondary_image: section.settings.show_secondary_image,
+            show_vendor: section.settings.show_vendor,
+            show_rating: section.settings.show_rating,
+            lazy_load: lazy_load,
+            show_quick_add: section.settings.enable_quick_add,
+            section_id: section.id
+          %}
+        </div>
+      {% else %}
+        {% for i in (1..5) %}
+          <div class="grid__item">
+            <div class="media media--square">
+              {{ 'product-' | append: i | placeholder_svg_tag }}
+            </div>
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Product List",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "select",
+      "label": "Heading size",
+      "id": "heading_size",
+      "options": [
+        {
+          "label": "Large",
+          "value": "h0"
+        },
+        {
+          "label": "Medium",
+          "value": "h1"
+        },
+        {
+          "label": "Small",
+          "value": "h2"
+        }
+      ]
+    },
+    {
+      "type":"text",
+      "label":"Button label",
+      "id":"button_label"
+    },
+    {
+      "type":"url",
+      "label":"Button link",
+      "id":"button_link"
+    },
+    {
+      "type": "product_list",
+      "label": "Select Products",
+      "id": "select_products",
+      "limit": 19
+    },
+    {
+      "type":"color_scheme",
+      "label":"Color Scheme",
+      "id":"color_scheme"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__3.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.main-collection-product-grid.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_rating.label",
+      "info": "t:sections.main-collection-product-grid.settings.show_rating.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_add",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_quick_buy.label"
+    },
+    {
+      "type": "range",
+      "label": "Padding top",
+      "id": "padding_top",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Padding bottom",
+      "id": "padding_bottom",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Product List"
+    }
+  ]
+}
+{% endschema %}

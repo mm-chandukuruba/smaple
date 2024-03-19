@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "custom-collections-tab",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

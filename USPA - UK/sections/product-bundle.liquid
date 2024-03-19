@@ -1,0 +1,82 @@
+<script src="{{ "product-bundle.js" |  asset_url }}" defer></script>
+
+{% assign products = product.metafields.custom.bundle_products %}
+
+{% style %}
+	.padding-{{ section.id }}{
+		padding-top: {{ section.settings.padding_top |  divided_by: 2 }}px;
+		padding-bottom : {{ section.settings.padding_bottom |  divided_by: 2 }}px;
+	}
+
+	@media screen and (min-width:750px){
+		.padding-{{ section.id }}{
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom : {{ section.settings.padding_bottom }}px;
+		}
+	}
+{% endstyle %}
+
+<div class="padding-{{ section.id }} bundle-products">
+	<div class="page-width">
+		{% if products %}
+			{% if section.settings.heading %}
+				<h3 class="h2">{{ section.settings.heading }}</h3>
+			{% endif %}
+			<div class="bundle-products__wrapper grid grid--4-col">
+				{% for product in products.value %}
+				<div class="bundle-product__container grid__item">
+					<div class="bundle-product__image-container">
+					<img class="bundle-product__image" src="{{ product.featured_image |  image_url }}" />
+					<input checked type="checkbox" name="bundle-product" class="bundle-checkbox" data-id="{{ product.selected_or_first_available_variant.id }}" data-qunatity="1"/>
+					</div>
+					<div class="bundle-product__content-container">
+					<span class="bundle-product__title">{{ product.title |  truncate: 15 }}</span>
+					<span class="bundle-product__price">{{ product.price |  money_without_currency }}</span>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<button class="button" id="product-bundle-bundle"><span>Add to cart</span></button>
+		{% endif %}
+	</div>
+</div>
+
+
+{% schema %}
+{
+	"name": "Product bundler",
+	"settings": [
+		{
+			"type": "text",
+			"label": "Heading",
+			"id": "heading",
+			"default": "Frequently bought together"
+		},
+		{
+			"type": "header",
+			"content":"Section padding"
+		},
+		{
+			"type":"range",
+			"min":0,
+			"max": 100,
+			"default": 20,
+			"label": "Padding top",
+			"id":"padding_top"
+		},
+		{
+			"type":"range",
+			"min":0,
+			"max": 100,
+			"default": 20,
+			"label": "Padding bottom",
+			"id":"padding_bottom"
+		}	
+			],
+	"presets": [
+		{
+			"name": "Product bundler"
+		}
+	]
+}
+{% endschema %}
