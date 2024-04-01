@@ -1,0 +1,180 @@
+{{ 'collection-products-grid.css' | asset_url | stylesheet_tag }}
+
+{% capture options %}
+'{
+    "loop": true,
+    "contain": true,
+    "prevNextButtons": true,
+    "pageDots": false,
+    "groupCells": 1,
+    "cellAlign": "left",
+    "watchCSS": true
+}'
+{% endcapture %}
+
+<div class="section-padding--{{ section.id }} page-width">
+  <h1 style="text-align: {{ section.settings.title_position }}">{{ section.settings.title }}</h1>
+  <div class="section--{{ section.id }} {% if section.settings.container-slider %} splide__list-container carousel{% endif %}" {% if section.settings.container-slider %}data-flickity={{ options }} {% endif %}>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when "collection" %}
+            <a href="{{ block.settings.collection.url }}" class="grid-item__container {% if section.settings.container-slider %}carousel-cell{% endif %}">
+                <div class="image" {% if block.settings.collection != blank %}style="overflow: hidden"{% endif %}>
+                    {% if block.settings.image != blank %}
+                         {% render "picture", mobileSrc: block.settings.image, desktopSrc: block.settings.image %}
+                    {% else %}
+                      <div class="collection-placeholder-image">
+                          {{ 'collection-apparel-1' | placeholder_svg_tag }}
+                      </div>  
+                    {% endif %}
+                    <div class="overlay-text" style="color: {{ block.settings.text_color }}">{{ block.settings.overlay_text }}</div>
+                  </div>
+                <div><p class="product-title">{{ block.settings.collection.title }}</p></div>
+            </a>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+
+<style>
+  .section-padding--{{ section.id }} {
+    padding-top: {{ section.settings.padding-top}}px;
+    padding-bottom: {{ section.settings.padding-bottom }}px;
+  }
+  .section--{{ section.id }}{
+    margin-bottom: 50px;
+    @media screen and (min-width: 750px){
+      display: grid;
+      gap: 10px;
+      {% if section.blocks.size <= 3 %}
+        grid-template-columns: repeat(3, 1fr);
+      {% else %}
+        grid-template-columns: repeat(5, 1fr);
+      {% endif %}
+    }
+  }
+
+  @media screen and (max-width: 749px){
+    {% if section.settings.container-slider == false %}
+      .section--{{ section.id }} {
+          display: grid;
+          gap: 10px;
+          grid-template-columns: repeat(2, 1fr);
+      }
+    {% else %}
+      .section--{{ section.id }} .carousel-cell{
+        width: 50%;
+      }
+    {% endif %}
+  }
+  .splide__list-container.carousel:after {
+    content: 'flickity';
+    display: none;
+  }
+  @media screen and (min-width: 765px) {
+    .splide__list-container.carousel:after {
+      content: '';
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Featured collection list",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section padding "
+      },
+      {
+        "type": "range",
+        "id": "padding-top",
+        "label": "Top padding",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "padding-bottom",
+        "label": "Bottom padding",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "default": 40
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Enter title",
+        "default": "Collection"
+      },
+      {
+        "type": "select",
+        "id": "title_position",
+        "label": "Title position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "checkbox",
+        "id": "container-slider",
+        "label": "Enable slider in mobile",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Select collection image"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Select collection"
+          },
+          {
+            "type": "text",
+            "id": "overlay_text",
+            "label": "Overlay text",
+            "default": "Overlay title"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Select overlay title color",
+            "default": "#363757"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection list"
+      }
+    ]
+  }
+{% endschema %}

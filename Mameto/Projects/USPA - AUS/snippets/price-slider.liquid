@@ -1,0 +1,285 @@
+<style>
+  .price-slider-container {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 30px 0;
+      transition: transform 0.2s;
+      width: 100%;
+  }
+  
+  .price-slider-container:hover {
+      transform: scale(1.05);
+  }
+  
+  .gfg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: #01940b;
+  }
+  
+  .custom-wrapper {
+      margin: 0;
+      width: 100%;
+      position: relative;
+  }
+  
+  .price-slider-container .header h2 {
+      font-size: 30px;
+      color: #01940b;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+  }
+  
+  /* Styles for the price input container */
+  .price-slider-container .price-input-container {
+      width: 100%;
+  }
+  
+  .price-slider-container .price-input .price-field {
+      display: flex;
+      margin-bottom: 22px;
+  }
+  
+  .price-slider-container .price-field span {
+      margin-right: 10px;
+      margin-top: 6px;
+      font-size: 17px;
+  }
+  
+  
+  
+  /* Remove Arrows/Spinners */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+  
+  .price-slider-container .slider-container {
+      width: 100%;
+      height: 6px;
+      position: relative;
+      background: #e4e4e4;
+      border-radius: 5px;
+  }
+  
+  .price-slider-container .slider-container .price-slider {
+      height: 100%;
+      left: 0%;
+      right: 0%;
+      position: absolute;
+      border-radius: 5px;
+      background: #01940b;
+  }
+  
+  .price-slider-container .range-input {
+      position: relative;
+  }
+  
+  .price-slider-container .range-input input {
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      background: none;
+      top: -7px;
+      pointer-events: none;
+      cursor: pointer;
+      -webkit-appearance: none;
+  }
+  
+  .price-slider-container .range-values {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 8px 0;
+  }
+  
+  /* Styles for the range thumb in WebKit browsers */
+  .price-slider-container input[type="range"]::-webkit-slider-thumb {
+      height: 18px;
+      width: 18px;
+      border-radius: 70%;
+      background: #555;
+      pointer-events: auto;
+      -webkit-appearance: none;
+  }
+  
+  .price-slider-container .range-container {
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .min-price,
+  .max-price {
+      /* position: absolute; */
+      /* top: 0; */
+      width: auto;
+  }
+  
+  @media screen and (max-width: 768px) {
+      .price-slider-container {
+          width: 80%;
+          margin-right: 5px;
+      }
+  
+      .custom-wrapper {
+          width: 100%;
+          left: 0;
+          padding: 0 10px;
+      }
+  
+      .projtitle {
+          width: 100%;
+          right: 26px;
+      }
+  
+      .price-slider-container .price-field {
+          margin-bottom: 10px;
+      }
+  }
+  
+  .price-slider-container .price-input input {
+      height: 35px;
+      font-size: 15px;
+      font-family: "DM Sans", sans-serif;
+      border-radius: 9px;
+      text-align: center;
+      border: 0px;
+      width: 40px;
+      margin-bottom: 4px;
+  }
+  
+  .price-slider-container .price-input {
+      width: 100%;
+      font-size: 19px;
+      color: #555;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  .price-slider-container .price-input {
+      position: relative;
+  }
+  
+  .min-input {
+      position: absolute;
+      top: -40px;
+      left: 0%;
+  }
+  
+  .max-input {
+      position: absolute;
+      top: -40px;
+      right: 0%;
+  }
+</style>
+
+<div class="price-slider-container">
+
+    <div class="custom-wrapper">
+        <div class="price-input-container">
+            <div class="price-input">
+                <input type="number" class="min-input" value="0">
+                <input type="number" class="max-input"  value="1000">
+            </div>
+            <div class="slider-container">
+                <div class="price-slider">
+                </div>
+            </div>
+        </div>
+
+        <div class="range-input">
+            <input type="range" class="min-range" min="0" max="1000" value="0" step="1">
+            <input type="range" class="max-range" min="0" max="1000" value="1000" step="1">
+        </div>
+    </div>
+</div>
+
+<script>
+// Script.js 
+  const rangevalue = document.querySelector(".slider-container .price-slider");
+  const rangeInputvalue = document.querySelectorAll(".range-input input");
+  // Set the price gap 
+  let priceGap = 50;
+  // Adding event listners to price input elements 
+  let minInput = document.querySelector(".min-price");
+  let maxInput = document.querySelector(".max-price");
+  
+  const priceInputvalue = document.querySelectorAll(".price-input input");
+  for (let i = 0; i < priceInputvalue.length; i++) {
+      priceInputvalue[i].addEventListener("input", e => {
+          // Parse min and max values of the range input 
+          let minp = parseInt(priceInputvalue[0].value);
+          let maxp = parseInt(priceInputvalue[1].value);
+          let diff = maxp - minp
+          if (minp < 0) {
+              alert("minimum price cannot be less than 0");
+              priceInputvalue[0].value = 0;
+              minp = 0;
+          }
+          // Validate the input values 
+          if (maxp > 1000) {
+              alert("maximum price cannot be greater than 1000");
+              priceInputvalue[1].value = 1000;
+              maxp = 1000;
+          }
+          if (minp > maxp - priceGap) {
+              priceInputvalue[0].value = maxp - priceGap;
+              minp = maxp - priceGap;
+              if (minp < 0) {
+                  priceInputvalue[0].value = 0;
+                  minp = 0;
+              }
+          }
+          // Check if the price gap is met 
+          // and max price is within the range 
+          if (diff >= priceGap && maxp <= rangeInputvalue[1].max) {
+              if (e.target.className === "min-input") {
+                  rangeInputvalue[0].value = minp;
+                  let value1 = rangeInputvalue[0].max;
+                  rangevalue.style.left = `${(minp / value1) * 100}%`;
+              } else {
+                  rangeInputvalue[1].value = maxp;
+                  let value2 = rangeInputvalue[1].max;
+                  rangevalue.style.right =
+                      `${100 - (maxp / value2) * 100}%`;
+              }
+          }
+      });
+      // Add event listeners to range input elements 
+  for (let i = 0; i < rangeInputvalue.length; i++) {
+          rangeInputvalue[i].addEventListener("input", e => {
+              let minVal =
+                  parseInt(rangeInputvalue[0].value);
+              let maxVal =
+                  parseInt(rangeInputvalue[1].value);
+              let diff = maxVal - minVal;
+              // Check if the price gap is exceeded 
+              if (diff < priceGap) {
+  
+                  // Check if the input is the min range input 
+                  if (e.target.className === "min-range") {
+                      rangeInputvalue[0].value = maxVal - priceGap;
+                  } else {
+                      rangeInputvalue[1].value = minVal + priceGap;
+                  }
+              } else {
+                  // Update price inputs and range progress 
+                  priceInputvalue[0].value = minVal;
+                  priceInputvalue[1].value = maxVal;
+                  priceInputvalue[0].style.left = `${(minVal / rangeInputvalue[0].max) * 100}%`;
+                  priceInputvalue[1].style.right = `${100 - (maxVal / rangeInputvalue[1].max) * 100}%`;
+                  rangevalue.style.left =
+                      `${(minVal / rangeInputvalue[0].max) * 100}%`;
+                  rangevalue.style.right =
+                      `${100 - (maxVal / rangeInputvalue[1].max) * 100}%`;
+              }
+          });
+      }
+  }
+</script>

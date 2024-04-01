@@ -1,0 +1,186 @@
+{{ 'shop-by-category.css' | asset_url | stylesheet_tag }}
+
+
+<style>
+  @media only screen and (min-width: 750px) {
+    .shop-category-section {
+        padding-bottom: {{ section.settings.padding-bottom}}px;
+        padding-top: {{ section.settings.padding-top}}px;
+    }
+  }
+</style>
+
+<div class="shop-category-section custom-flickity-arrows shop-category-section--{{ section.id }}">
+  <div class="page-width">
+    <div class="shop-category-section__main shop-category-section__main--{{ section.id }}">
+      <div class="shop-category-heading__container{% if section.settings.category_heading == blank %} no-heading {% endif %}">
+        {%- if section.settings.category_heading != blank -%}
+            <div class="shop-category-heading subtitle-text tm-blue-color">
+                {{ section.settings.category_heading }}
+            </div> 
+        {%- endif -%}
+        {%- if section.settings.view_all_link != blank -%}
+            <div class="shop-category-viewall">
+                <a class="category-viewall--link text-body tm-blue-color" href="{{ section.settings.view_all_link }}"> 
+                <span>VIEW ALL CATEGORIES</span>
+                <span>{% render 'icon-arrow' %}</span>
+              </a>
+            </div> 
+        {%- endif -%}
+      </div>
+      <div class="shop-category-main__container">
+        {%- if section.blocks.size > 0 -%}
+          <div class="shop-category-main__flex{% if section.settings.category_carousel %} shop-category-main__flex-container{% endif %}">
+            {%- for block in section.blocks -%}
+              <a class="shop-category-block__content {{ section.settings.category_count }}"  href="{{ block.settings.category_link }}">
+                {%- if block.settings.category_image != blank -%}
+                  <div class="shop-category-image">
+                    <img srcset="{{ block.settings.category_image | image_url: width: block.settings.image_width }}, {{ block.settings.category_image | image_url: width: image_size_2x }} 2x"
+                      src="{{ block.settings.category_image | image_url: width: 760 }}"
+                      alt="{{ block.settings.category_image.alt | escape }}"
+                      loading="lazy"
+                      width="{{ block.settings.category_image.width }}"
+                      height="{{ block.settings.category_image.height }}">
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.category_text != blank -%}
+                  <div class="shop-category-subheading text-body">
+                    {{ block.settings.category_text }}
+                  </div>
+                {%- endif -%}
+                {% if block.settings.category_title != blank %}
+                  <div class="shop-category_title helvetica-body" style="font-size: {{ section.settings.overlay_size }}px">
+                    {{ block.settings.category_title }}
+                  </div>
+                {% endif %}
+              </a>
+            {%- endfor -%}
+          </div> 
+        {%- endif -%}
+      </div>
+    </div> 
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Shopy by Category",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Shopy by Category"
+      },
+      {
+        "type": "text",
+        "id": "category_heading",
+        "label": "Heading"
+      },
+      {
+        "type": "url",
+        "id": "view_all_link",
+        "label": "View All",
+        "info": "Add link to show View all"
+      },
+      {
+        "type": "select",
+        "id": "category_count",
+        "label": "Select the product count to display",
+        "options": [
+          {
+            "value": "two",
+            "label": "Two"
+          },
+          {
+            "value": "three",
+            "label": "Three"
+          },
+          {
+            "value": "four",
+            "label": "Four"
+          },
+          {
+            "value": "six",
+            "label": "Six"
+          }
+        ],
+        "default": "four"
+      },
+      {
+        "type": "range",
+        "id": "overlay_size",
+        "label": "Select overlay tile size",
+        "min": 0,
+        "max": 34,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "checkbox",
+        "id": "category_carousel",
+        "label": "Enable carousel",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Section padding "
+      },
+      {
+        "type": "range",
+        "id": "padding-top",
+        "label": "Top padding",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding-bottom",
+        "label": "Padding bottom",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "default": 72
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Block",
+        "type": "block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "category_image",
+            "label": "Category Image",
+            "info": "Dimension (188x280)px"
+          },
+          {
+            "type": "text",
+            "id": "category_text",
+            "label": "Category Text"
+          },
+          {
+            "type": "url",
+            "id": "category_link",
+            "label": "Category link"
+          },
+          {
+            "type": "text",
+            "id": "category_title",
+            "label": "Enter overlay category title",
+            "default": "Category title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Shopy by Category"
+      }
+    ]
+  }
+{% endschema %}
+

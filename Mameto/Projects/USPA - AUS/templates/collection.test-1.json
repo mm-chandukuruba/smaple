@@ -1,0 +1,100 @@
+{
+  "sections": {
+    "3a1afc49-4182-4a49-abfa-bc20bcd94ec7": {
+      "type": "slideshow",
+      "blocks": {
+        "template--21547662213418__3a1afc49-4182-4a49-abfa-bc20bcd94ec7-slide-1": {
+          "type": "slide",
+          "settings": {
+            "image_banner_link": "",
+            "image": "shopify:\/\/shop_images\/PENF_CAT_BANNERS-1023_v4.2.png",
+            "heading": "",
+            "heading_size": "h1",
+            "separator_line": false,
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "template--21547662213418__3a1afc49-4182-4a49-abfa-bc20bcd94ec7-slide-2": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image_banner_link": "",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "separator_line": false,
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--21547662213418__3a1afc49-4182-4a49-abfa-bc20bcd94ec7-slide-1",
+        "template--21547662213418__3a1afc49-4182-4a49-abfa-bc20bcd94ec7-slide-2"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": true,
+        "color_scheme": "background-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 3,
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "3a1afc49-4182-4a49-abfa-bc20bcd94ec7",
+    "banner",
+    "product-grid"
+  ]
+}

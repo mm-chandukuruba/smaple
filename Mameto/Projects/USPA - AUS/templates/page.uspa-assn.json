@@ -1,0 +1,145 @@
+{
+  "sections": {
+    "banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_pKjVab": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_pKjVab"
+      ],
+      "settings": {
+        "image": "{{ page.metafields.custom.page_banner.value }}",
+        "image_banner_link": "",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "uspa_faq_Y9JJ47": {
+      "type": "uspa-faq",
+      "blocks": {
+        "faq_item_je3cgt": {
+          "type": "faq_item",
+          "settings": {
+            "question": "HOW DO I LOCATE A STORE NEAR ME?",
+            "answer": "The ‘Store Locator’ section on the page allows you to locate the closest U.S. Polo Assn. store to you. Simply enter your pin code, and all of the U.S. Polo Assn. stores closest to you will appear."
+          }
+        },
+        "faq_item_EA7337": {
+          "type": "faq_item",
+          "settings": {
+            "question": "WHAT EXACTLY IS THE \"OMNICHANNEL EXPERIENCE\"?",
+            "answer": "U. S. Polo Assn. strives to make your shopping more seamless by connecting the offline and online retail experiences. We've integrated the U.S. Polo Assn. online platform into select stores, so you can start, resume, or end your shopping journey whenever and wherever you want."
+          }
+        },
+        "faq_item_aLfEDN": {
+          "type": "faq_item",
+          "settings": {
+            "question": "WHAT ARE THE ADVANTAGES OF OMNICHANNEL?",
+            "answer": "You could start shopping on your laptop or phone and end it at a brand store with your preferred pin code, and vice versa. This basically gives you all of the authority and elevates your shopping experience. U.S. Polo Assn. allows you to either shop online or shop at the store; whatever is the most convenient for you. U.S. Polo Assn. strives to make sure you get your order at the earliest. If you want to pick up your order the same day, with the U.S. Polo Assn. pick-ups, you can shop and pick up on the go."
+          }
+        },
+        "faq_item_aek8yY": {
+          "type": "faq_item",
+          "settings": {
+            "question": "YOUR ACCOUNT",
+            "answer": "Is it necessary to create an account in order to shop at U.S. Polo Assn. .?While you can browse https:\/\/uspoloassn.in without logging in, you must have an account to shop with us. We save your name, address, and basic contact information here. It's a straightforward three-step sign-up process.How do I change my account information?1. Sign in to your account at https:\/\/uspoloassn.in\/2. Select ‘My Information’3. Make your changes, then press the ‘Save’ button.Forgot your password? Here's how to obtain a new password:1. Browse to the U.S. Polo Assn. login page.2. On the login screen, select the ‘Forgot Password’ option3. You will receive an email from us at your registered email address4. To reset your password, click the link in your email and follow the instructionsCan I use my Google or Facebook accounts to log in to my U.S. Polo Assn. account?Yes, that's possible. Simply head on over to the Login page and select either Google or Facebook to get started.How do I change my billing and shipping addresses?1. Sign in to your account at https:\/\/uspoloassn.in\/2. Under ‘My Addresses’ go to ‘Edit’.3. Replace or update your address.4. Click on the ‘Save’ button."
+          }
+        },
+        "faq_item_E6T8wj": {
+          "type": "faq_item",
+          "settings": {
+            "question": "ORDER INFORMATION",
+            "answer": "How do I access my order history?1. Sign in to your U.S. Polo Assn. account.2. In the top right corner of your screen, click ‘My U.S. Polo Assn.’3. To view your order history, go to ‘My Account.’How do I track my order? We'll notify you via SMS and email whenever the status of your shipment changes. In the meantime, you can always check the status of your order on your U.S. Polo Assn. account.1. Sign in to your account 2. Navigate to ‘Order Details’ and click on ‘Order Tracking’Can I change my order after it has been placed?No, once an order has been confirmed, we cannot change anything. We cannot add items to it, substitute one item for another, or increase the quantity of a product. You can, however, always place a new order with the new items you want."
+          }
+        },
+        "faq_item_EqGbTW": {
+          "type": "faq_item",
+          "settings": {
+            "question": "ADDRESS",
+            "answer": "If your delivery address has changed, please contact us, and we will ship your order to the new address, considering the invoice hasn't already been generated. If your order is sent to the wrong address, it will be returned to the original shipment location. If it was a prepaid order, we will refund the amount to your bank account. If you selected ‘cash on delivery’  we will advise you to place a new order with a different address.However, please note that we are unable to change the pick-up location for store pick-ups once an order has been placed.We make every effort to deliver your order to you when, where, and how you want it. However, we can only make changes up to a certain point in the order process, after which additional costs and time may be incurred. Please contact us if you need to make changes to an existing U.S. Polo Assn. order.What is the store pickup option and how do I select it?If you need your U.S. Polo Assn. order right away, the store pick-up option comes in handy, as you can use the ‘Store Locator’ to pick up your online order from a store near you. To select store pickup as your preferred delivery method, follow these three simple steps:1. Go to the checkout page and select the shipping method2. Enter your pin code and select ‘Show Options’3. Select the ‘Store Pickup’ optionIf I want my U.S. Polo Assn. order to be delivered at the earliestWhen you place an order with U.S. Polo Assn., you can choose to have it delivered the same day or the next day for an extra fee. Please keep in mind that this is only possible if the product is available at the nearest hub or store and if the product has not already generated an invoice.How long will it take for my order from U.S. Polo Assn. to arrive?Enter your area pin code on the product page of the item you want to buy, and we'll tell you how long it will take to arrive at your location. We'll also send you an email with estimated delivery dates after you place your order.I want to place a bulk order with the U.S. Polo Assn. U.S. Polo Assn. does not accept bulk orders or more than five of the same items at a time.Is there a product warranty or guarantee provided by the USPA?All U.S. Polo Assn. merchandise is genuine and sourced directly from the brand. The brand's warranty applies to all products sold by U.S. Polo Assn."
+          }
+        },
+        "faq_item_Je4QPf": {
+          "type": "faq_item",
+          "settings": {
+            "question": "TRACKING & DELIVERY",
+            "answer": "Yes, you can contact our courier partner and request no-contact delivery or return, if you require. Why is the estimated date of delivery different from the date given when the order was placed?The estimated delivery time is a rough estimate for your delivery date. When you place an order, we locate the nearest shop to your address and update your estimated delivery time accordingly. This is why there could be a difference between the two dates."
+          }
+        },
+        "faq_item_aqNFTC": {
+          "type": "faq_item",
+          "settings": {
+            "question": "DELIVERY FEES",
+            "answer": "Free shipping is available on orders of ₹1,000 or more. Shipping is ₹99 for orders under ₹999.When can I expect delivery of my orders?Typically, we deliver on all days. There may be occasional delays due to national holidays and unforeseen circumstances.Why doesn't U.S. Polo Assn. deliver to some areas?There's a chance that our courier partners aren't yet able to deliver to your zip code, so we can't send you anything right now. We're expanding our reach and working with reputable courier companies, so we should be able to get to you.Does U.S. Polo Assn. in ship to countries other than India?No, we do not ship internationally.Why did I receive only part of your order?U.S. Polo Assn. will deliver your orders from various locations across the country, with the shipment closest to your location usually arriving first. We'll notify you via email once the remainder of your shipment has been dispatched or is in transit.I placed my order online but I want to pick it up in person.1. When your order is ready to be picked up from the store, an SMS will be sent to your registered mobile number.2. When your order is ready to be picked up from the store, an email will be sent to your registered email address.3. The option for live tracking will be available on the My Orders page.How long do I have after receiving confirmation of an order to pick it up from the store?You can pick up your order within 4 days of receiving the pick-up confirmation via SMS, email, or the live tracking option on the ‘My Orders’ page. Due to any circumstances, if you're not able to go and collect your order, it is automatically canceled and you must place a new one.  Can I pay for my order when I pick it up in the store?Yes, you can. You can either pay with cash or a credit or debit card.What you need to bring to the store when you go and collect your order?Please have the confirmation text containing your U.S. Polo Assn. Order ID sent to your registered mobile number or email address ready at the time of pick-up. In case I'm not available to come to the store to collect my order:It is possible for someone else to pick up your order from the store on your behalf. The person who is collecting it on your behalf must include the confirmation text with your U.S. Polo Assn.  Order ID, which was sent to your registered mobile number or email address."
+          }
+        },
+        "faq_item_V3KkEi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "RETURNS",
+            "answer": "What is the return policy of U.S. Polo Assn.?We have a 15-day return policy at U.S. Polo Assn. that allows you to return items purchased from us. All returned items are subjected to our quality control checklist, and the refund or replacement is processed only after they pass this stage.Items must be returned in their original condition with all tags attached. This return policy does not cover items that have been damaged due to neglect, improper usage, or application.Special rules for promotional offers may take precedence over this policy.Convenience and delivery fees are not refundable, and cash-on-delivery refunds are only available through NEFT transactions.We do not accept returns on innerwear. However, because we understand that these products are prone to damage, they can only be returned to us within three days of receipt. We will process your refund after a thorough inspection of the item.Is it possible to only return a portion of your order?Yes, it is possible. Each item you return will be assigned a unique return ID and assigned to the given email address. Why was my return request denied?If the product you want to return doesn't meet the requirements in our ‘Returns Policy,’ we will turn down your request.Upon return, what happens to the delivery charges that were incurred? Shipping costs are non-refundable. How do I return multiple items from the same order?1. Go to U.S. Polo Assn. and select ‘My Account’2. Begin a return for the product you wish to return3. Separately pack each item and include the return ID4. Label the package with the return IDs for each product5. Hand it over to the delivery executive at your selected addressSelf-shipAt some locations, we do not provide reverse pick-up service. In such cases, we ask that you self-ship the product to us. To obtain the return address, please initiate self-shipping from https:\/\/uspoloassn.in\/ You can ship the product yourself, using any courier service of your choice. We will reimburse you up to ₹100 for this.Before you self-ship, keep the following points in mind:The product must be unused.Product tags must be included in the return package and be in good condition.Returns are subject to our return policy, which can be found on our website.Please send the courier receipt via email and your order number to care@uspoloassn.in"
+          }
+        },
+        "faq_item_kH8kNy": {
+          "type": "faq_item",
+          "settings": {
+            "question": "CANCELLATIONS",
+            "answer": "What is the cancellation policy?Email us at care@uspoloassn.co.in if you want to cancel your order before it leaves the warehouse or store. If your order has already been shipped, you can refuse it when it arrives at your door.How are refunds handled?The method of payment you used for your order will determine how you will receive a refund.Paid in-store or with cash on delivery: Refund initiated seven business days after our quality check via National Electronic Funds Transfer.Online payment via credit card, debit card, or net banking: Refund initiated seven business days after our quality check, a refund is sent to the source.I was refunded less than what I had originally paidIf the product was part of a promotional offer that was subject to terms and conditions, your return amount could be less than what you originally paid. If the promotion is no longer valid for your whole order, the total price of your order is changed to reflect this, and the difference is taken out of the amount you are refunded.If you still feel like there's been a mistake from our end, send us an email at care@uspoloassn.co.in, and we will get back to you at the earliest with a response."
+          }
+        },
+        "faq_item_VYc8fb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "MORE QUERIES",
+            "answer": "What payment methods are available?You can pay with cash on deliveryYou can choose to make the payments online by using credit or debit cards and internet banking.If I place my order online, is it possible to get my order at the store?Yes, that is very much possible. Customers who want their U.S. Polo Assn. purchases right away can choose 'Store Pick-up' or \"cash on delivery\" when checking out. This enables you to pay in cash at the store or through your credit or debit card.Is it secure to use credit or debit cards on U.S. Polo Assn. .com?Yes, we have teamed up with reputable payment gateways to make sure that every order's payment is safe and secure.My order was not confirmed, but the money was deducted from my account.If at any point a situation like this arises, your money will be returned to your account within five to seven business days. In the meantime, you can go ahead and place a new order for your items.Why is there a price and promotion difference between offline stores and uspoloassn.co.in.?Online and offline U.S. Polo Association stores coexist in an omnichannel environment.Prices and discounts vary depending on location and event (though we try to keep things as standard as possible). Some promotions are available exclusively online, in-store, or in particular cities."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_je3cgt",
+        "faq_item_EA7337",
+        "faq_item_aLfEDN",
+        "faq_item_aek8yY",
+        "faq_item_E6T8wj",
+        "faq_item_EqGbTW",
+        "faq_item_Je4QPf",
+        "faq_item_aqNFTC",
+        "faq_item_V3KkEi",
+        "faq_item_kH8kNy",
+        "faq_item_VYc8fb"
+      ],
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "heading_text": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main",
+    "uspa_faq_Y9JJ47"
+  ]
+}

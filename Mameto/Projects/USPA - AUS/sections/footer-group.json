@@ -1,0 +1,62 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_UgbD6x": {
+          "type": "link_list",
+          "settings": {
+            "heading": "ABOUT",
+            "menu": "about-footer"
+          }
+        },
+        "link_list_CWB9Rw": {
+          "type": "link_list",
+          "settings": {
+            "heading": "CUSTOMER CARE",
+            "menu": "customer-care"
+          }
+        },
+        "link_list_RJYwzJ": {
+          "type": "link_list",
+          "settings": {
+            "heading": "TERMS & POLICIES",
+            "menu": "terms-policies"
+          }
+        },
+        "brand_information_6Db9CA": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
+        }
+      },
+      "block_order": [
+        "link_list_UgbD6x",
+        "link_list_CWB9Rw",
+        "link_list_RJYwzJ",
+        "brand_information_6Db9CA"
+      ],
+      "settings": {
+        "color_scheme": "background-2",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "newsletter_heading_sub": "Sign up for exclusive updates, new arrivals & insider only discounts",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

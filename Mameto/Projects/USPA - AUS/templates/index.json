@@ -1,0 +1,598 @@
+{
+  "sections": {
+    "slideshow_9GAAVT": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_CVwJat": {
+          "type": "slide",
+          "settings": {
+            "image_banner_link": "shopify:\/\/collections\/new-arrivals",
+            "image": "shopify:\/\/shop_images\/HERO_BANNER_b9e9f784-0f12-492c-acff-b9b3a0a4e101.png",
+            "heading": "",
+            "heading_size": "h1",
+            "separator_line": false,
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_GtCfB9": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image_banner_link": "",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "separator_line": false,
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_CVwJat",
+        "slide_GtCfB9"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand",
+        "padding_top": 0,
+        "padding_bottom": 16
+      }
+    },
+    "multi_image_banner_qmXCeE": {
+      "type": "multi-image-banner",
+      "blocks": {
+        "block_FnXUzM": {
+          "type": "block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/SUB_MENS.png",
+            "image_banner_link": "shopify:\/\/collections\/mens-clothing",
+            "heading": "",
+            "heading_size": "h1",
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        },
+        "block_7emzXK": {
+          "type": "block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/SUB_WOMENS.png",
+            "image_banner_link": "shopify:\/\/collections\/womens-new-arrivals",
+            "heading": "",
+            "heading_size": "h1",
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        },
+        "block_KiATNr": {
+          "type": "block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/SUB_KIDS.png",
+            "image_banner_link": "shopify:\/\/collections\/kids-clothing",
+            "heading": "",
+            "heading_size": "h1",
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        },
+        "block_XVV8VM": {
+          "type": "block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/SUB_B_T.png",
+            "image_banner_link": "shopify:\/\/collections\/big-tall-clothing",
+            "heading": "",
+            "heading_size": "h1",
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "block_FnXUzM",
+        "block_7emzXK",
+        "block_KiATNr",
+        "block_XVV8VM"
+      ],
+      "settings": {
+        "padding-top": 30,
+        "padding-bottom": 40,
+        "heading_text": "NEW ARRIVALS",
+        "text_position_bottom": 18,
+        "text_position_right": 16,
+        "image_overlay_opacity": 0,
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "featured_collection_9QVwfW": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Polo Collection",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "polo-shirts",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_list_Mna4wb": {
+      "type": "featured-collection-list",
+      "disabled": true,
+      "settings": {
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "polo-shirts",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_product_grid_AMUgEX": {
+      "type": "featured-collection-product-grid",
+      "blocks": {
+        "collection_B77CPw": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage",
+            "overlay_text": "Overlay title",
+            "text_color": "#363757"
+          }
+        },
+        "collection_KrDgif": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "overlay_text": "Overlay title",
+            "text_color": "#363757"
+          }
+        },
+        "collection_YdAYKR": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "overlay_text": "Overlay title",
+            "text_color": "#363757"
+          }
+        }
+      },
+      "block_order": [
+        "collection_B77CPw",
+        "collection_KrDgif",
+        "collection_YdAYKR"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding-top": 0,
+        "padding-bottom": 0,
+        "title": "Collection",
+        "title_position": "center",
+        "container-slider": false
+      }
+    },
+    "video_Qfq6yV": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": true,
+        "video_autoplay": true,
+        "video_controls": false,
+        "video": "shopify:\/\/files\/videos\/USPA_AW24_HP_BANNER_AUS-ds-trim.mp4",
+        "video_url": "",
+        "description": "Shop The New Collection by U.S. Polo Assn",
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "shop_by_category_A33HNa": {
+      "type": "shop-by-category",
+      "blocks": {
+        "block_tezq77": {
+          "type": "block",
+          "settings": {
+            "category_image": "shopify:\/\/shop_images\/J_T_1.gif",
+            "category_text": "",
+            "category_link": "shopify:\/\/collections\/jeans-trousers",
+            "category_title": ""
+          }
+        },
+        "block_9Q6UYA": {
+          "type": "block",
+          "settings": {
+            "category_image": "shopify:\/\/shop_images\/HS_2_75f53e73-4cee-4a58-89cd-d533bab2b1c2.jpg",
+            "category_text": "",
+            "category_link": "shopify:\/\/collections\/hoodies-sweatshirts",
+            "category_title": ""
+          }
+        },
+        "block_zR6kci": {
+          "type": "block",
+          "settings": {
+            "category_image": "shopify:\/\/shop_images\/PT_1.gif",
+            "category_text": "",
+            "category_link": "shopify:\/\/collections\/polo-shirts-t-shirts",
+            "category_title": ""
+          }
+        },
+        "block_BeTKUV": {
+          "type": "block",
+          "settings": {
+            "category_image": "shopify:\/\/shop_images\/U_S_2.jpg",
+            "category_text": "",
+            "category_link": "shopify:\/\/collections\/underwear-socks",
+            "category_title": ""
+          }
+        },
+        "block_hbUHwm": {
+          "type": "block",
+          "settings": {
+            "category_image": "shopify:\/\/shop_images\/KN_1.gif",
+            "category_text": "",
+            "category_link": "",
+            "category_title": ""
+          }
+        },
+        "block_9HmBWH": {
+          "type": "block",
+          "settings": {
+            "category_image": "shopify:\/\/shop_images\/CJ_1.jpg",
+            "category_text": "",
+            "category_link": "shopify:\/\/collections\/coats-jackets",
+            "category_title": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_tezq77",
+        "block_9Q6UYA",
+        "block_zR6kci",
+        "block_BeTKUV",
+        "block_hbUHwm",
+        "block_9HmBWH"
+      ],
+      "settings": {
+        "category_heading": "CATEGORIES",
+        "view_all_link": "",
+        "category_count": "four",
+        "overlay_size": 20,
+        "category_carousel": true,
+        "padding-top": 0,
+        "padding-bottom": 72
+      }
+    },
+    "302182df-37df-47e3-8ecf-0eded61553dc": {
+      "type": "custom-featured-blog-section",
+      "settings": {
+        "blog_heading": "BLOGS",
+        "blog": "news",
+        "link_text": "VIEW ALL ARTICLES",
+        "article_limit": 4,
+        "padding-top": 0,
+        "padding-bottom": 72
+      }
+    },
+    "image_with_text_4nf8kT": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_mRRq49": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sports Meets Fashion",
+            "heading_size": "h1"
+          }
+        },
+        "text_F6QNYX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>When you purchase a U.S.Polo Assn products, you can own a piece of the polo sport. We are the official clothing brand of the United States Polo Association (USPA)--one of the oldest sports in the United States. This is a proud distinction that links our illusions past to a bright future that you are an important part of.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_F44Dqx": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "shopify:\/\/pages\/about-us",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_mRRq49",
+        "text_F6QNYX",
+        "button_F44Dqx"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/SMFnew3_41f3eaa0-aa6d-4cb8-8c97-5792f87692c2.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "usp_section_hdyHYm": {
+      "type": "usp-section",
+      "blocks": {
+        "block_F8EV8E": {
+          "type": "block",
+          "settings": {
+            "usp_image": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"108\" height=\"64\" viewbox=\"0 0 108 64\" fill=\"none\">\n  <path d=\"M31.6872 52.6334H23.2978C22.1411 52.6334 21.203 51.6969 21.203 50.5454C21.203 49.3938 22.1436 48.4573 23.2978 48.4573H31.6872C32.8439 48.4573 33.7845 49.3938 33.7845 50.5454C33.7845 51.6969 32.8439 52.6334 31.6872 52.6334ZM99.8367 52.6334H94.5921C93.4354 52.6334 92.4973 51.6969 92.4973 50.5454C92.4973 49.3938 93.4379 48.4573 94.5921 48.4573H98.0953L100.922 33.4616C100.884 25.7878 94.2997 19.2327 86.2053 19.2327H72.4366L65.7657 48.4573H77.8159C78.9752 48.4573 79.9158 49.3938 79.9158 50.5454C79.9158 51.6969 78.9752 52.6334 77.8185 52.6334H63.1396C62.5041 52.6334 61.899 52.3448 61.4999 51.8488C61.1008 51.3552 60.9508 50.7048 61.0931 50.0847L68.7198 16.684C68.9359 15.7299 69.7825 15.0566 70.7638 15.0566H86.2053C96.6106 15.0566 105.079 23.4846 105.079 33.8437L101.893 50.9275C101.71 51.9196 100.849 52.6334 99.8367 52.6334Z\" fill=\"#363757\"><\/path>\n  <path d=\"M40.0728 60.9819C34.2943 60.9819 29.5886 56.2997 29.5886 50.5444C29.5886 44.7865 34.2918 40.1068 40.0728 40.1068C45.8513 40.1068 50.557 44.7891 50.557 50.5444C50.557 56.3023 45.8538 60.9819 40.0728 60.9819ZM40.0728 44.2803C36.6052 44.2803 33.7833 47.0897 33.7833 50.5444C33.7833 53.9966 36.6052 56.8059 40.0728 56.8059C43.5404 56.8059 46.3623 53.9966 46.3623 50.5444C46.3623 47.0922 43.5404 44.2803 40.0728 44.2803ZM31.686 15.0557H14.9098C13.7531 15.0557 12.8125 14.1192 12.8125 12.9677C12.8125 11.8161 13.7531 10.8796 14.9098 10.8796H31.686C32.8427 10.8796 33.7833 11.8161 33.7833 12.9677C33.7833 14.1192 32.8427 15.0557 31.686 15.0557ZM31.686 27.5813H10.7151C9.55842 27.5813 8.62034 26.6448 8.62034 25.4932C8.62034 24.3417 9.56096 23.4052 10.7151 23.4052H31.686C32.8427 23.4052 33.7833 24.3417 33.7833 25.4932C33.7833 26.6448 32.8427 27.5813 31.686 27.5813ZM31.686 40.1068H6.523C5.36628 40.1068 4.42566 39.1704 4.42566 38.0188C4.42566 36.8672 5.36628 35.9308 6.523 35.9308H31.686C32.8427 35.9308 33.7833 36.8672 33.7833 38.0188C33.7833 39.1704 32.8427 40.1068 31.686 40.1068Z\" fill=\"#363757\"><\/path>\n  <path d=\"M63.1396 52.6336H48.4608C47.3041 52.6336 46.3635 51.6971 46.3635 50.5455C46.3635 49.394 47.3041 48.4575 48.4608 48.4575H61.4668L70.9951 6.70729H23.2978C22.1411 6.70729 21.203 5.77084 21.203 4.61927C21.203 3.46769 22.1436 2.53125 23.2978 2.53125H73.6263C74.2619 2.53125 74.8669 2.81978 75.2661 3.31584C75.6652 3.80937 75.8152 4.45982 75.6728 5.07737L65.1861 51.0036C64.9675 51.9603 64.1184 52.6336 63.1396 52.6336ZM86.2053 60.9831C80.4268 60.9831 75.7211 56.3009 75.7211 50.5455C75.7211 44.7877 80.4242 40.108 86.2053 40.108C91.9838 40.108 96.6894 44.7902 96.6894 50.5455C96.6894 56.3034 91.9863 60.9831 86.2053 60.9831ZM86.2053 44.2815C82.7377 44.2815 79.9158 47.0908 79.9158 50.5455C79.9158 53.9977 82.7377 56.8071 86.2053 56.8071C89.6729 56.8071 92.4973 53.9977 92.4973 50.5455C92.4973 47.0934 89.6754 44.2815 86.2053 44.2815Z\" fill=\"#363757\"><\/path>\n<\/svg>",
+            "usp_text": "FAST SHIPPING",
+            "usp_link": "shopify:\/\/pages\/delivery-and-shipping-policy"
+          }
+        },
+        "block_Hi6Crk": {
+          "type": "block",
+          "settings": {
+            "usp_image": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"77\" height=\"54\" viewbox=\"0 0 77 54\" fill=\"none\">\n  <path d=\"M74.9957 0.803724H22.8941C22.4965 0.803724 22.1151 0.961684 21.8339 1.24286C21.5528 1.52403 21.3948 1.90538 21.3948 2.30303V51.7985C21.3948 52.1962 21.5528 52.5775 21.8339 52.8587C22.1151 53.1399 22.4965 53.2979 22.8941 53.2979H74.9957C75.3933 53.2979 75.7747 53.1399 76.0558 52.8587C76.337 52.5775 76.495 52.1962 76.495 51.7985V2.30303C76.495 1.90538 76.337 1.52403 76.0558 1.24286C75.7747 0.961687 75.3933 0.803724 74.9957 0.803724ZM40.0239 3.79255L57.8659 3.80028V16.4243H40.0239V3.79255ZM73.4865 50.2992H24.3954V3.80037H37.0273V17.9315C37.0273 18.3292 37.1852 18.7105 37.4664 18.9917C37.7476 19.2729 38.1289 19.4308 38.5266 19.4308H59.3672C59.7649 19.4308 60.1462 19.2729 60.4274 18.9917C60.7085 18.7105 60.8665 18.3292 60.8665 17.9315V3.80037H73.4983L73.4865 50.2992Z\" fill=\"#363757\" stroke=\"#363757\" stroke-width=\"0.392552\"><\/path>\n  <path d=\"M12.8276 20.5379V22.4796L18.455 19.2369L12.8276 15.9941V17.9358H2.05531C1.88006 17.929 1.70523 17.9576 1.5413 18.02C1.37737 18.0823 1.22772 18.1771 1.1013 18.2987C0.974894 18.4203 0.874322 18.5661 0.805628 18.7275C0.736935 18.8889 0.701538 19.0625 0.701538 19.2379C0.701538 19.4132 0.736935 19.5869 0.805628 19.7482C0.874322 19.9096 0.974894 20.0554 1.1013 20.177C1.22772 20.2986 1.37737 20.3934 1.5413 20.4558C1.70523 20.5181 1.88006 20.5468 2.05531 20.5399L12.8276 20.5379Z\" fill=\"#363757\"><\/path>\n  <path d=\"M17.6858 33.5638H6.9135V31.6221L1.28613 34.8649L6.9135 38.1076V36.1659H17.6858C18.0314 36.1659 18.3628 36.0286 18.6072 35.7842C18.8515 35.5399 18.9888 35.2084 18.9888 34.8629C18.9888 34.5173 18.8515 34.1858 18.6072 33.9414C18.3628 33.6971 18.0314 33.5598 17.6858 33.5598V33.5638Z\" fill=\"#363757\"><\/path>\n<\/svg>",
+            "usp_text": "EASY RETURNS",
+            "usp_link": "shopify:\/\/pages\/refund-policy"
+          }
+        },
+        "block_T4TXd3": {
+          "type": "block",
+          "settings": {
+            "usp_image": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"55\" height=\"67\" viewbox=\"0 0 55 67\" fill=\"none\">\n  <path d=\"M22.2789 40.3261C22.4086 40.4562 22.5628 40.5594 22.7324 40.6299C22.9021 40.7003 23.0839 40.7365 23.2676 40.7365C23.4513 40.7365 23.6332 40.7003 23.8028 40.6299C23.9725 40.5594 24.1265 40.4562 24.2562 40.3261L37.949 26.6334C38.2112 26.3712 38.3585 26.0156 38.3585 25.6447C38.3585 25.2739 38.2112 24.9183 37.949 24.6561C37.6868 24.3939 37.3312 24.2466 36.9604 24.2466C36.5895 24.2466 36.2339 24.3939 35.9717 24.6561L23.2676 37.3621L19.0283 33.1228C18.7661 32.8606 18.4105 32.7133 18.0397 32.7133C17.6689 32.7133 17.3132 32.8606 17.051 33.1228C16.7888 33.385 16.6415 33.7407 16.6415 34.1115C16.6415 34.4823 16.7888 34.8379 17.051 35.1001L22.2789 40.3261Z\" fill=\"#363757\"><\/path>\n  <path d=\"M27.2004 65.0662C27.3932 65.1282 27.6007 65.1282 27.7936 65.0662C28.8593 64.7222 53.8839 56.4175 53.8839 38.7248V10.228C53.8836 9.98259 53.7905 9.74634 53.6232 9.56665C53.456 9.38697 53.2271 9.27713 52.9823 9.25917C45.3578 8.70751 35.6395 7.29573 28.1099 1.21556C27.9372 1.07608 27.7219 1 27.4999 1C27.2779 1 27.0627 1.07608 26.8899 1.21556C19.3604 7.29375 9.64206 8.70751 2.01763 9.25917C1.77283 9.27713 1.54386 9.38697 1.37664 9.56665C1.20943 9.74634 1.11631 9.98259 1.11597 10.228V38.7248C1.11597 56.4175 26.1425 64.7222 27.2162 65.0662H27.2004ZM3.05768 11.1297C10.6149 10.5246 19.9497 8.99027 27.4989 3.21065C35.0482 8.99027 44.383 10.5266 51.9402 11.1317V38.7267C51.9402 54.023 30.3107 62.128 27.495 63.1166C24.6793 62.128 3.04978 54.0211 3.04978 38.7267L3.05768 11.1297Z\" fill=\"#363757\" stroke=\"#363757\" stroke-width=\"1.97729\"><\/path>\n<\/svg>",
+            "usp_text": "SATISFACTION GUARANTEE",
+            "usp_link": "shopify:\/\/pages\/terms-and-conditions"
+          }
+        }
+      },
+      "block_order": [
+        "block_F8EV8E",
+        "block_Hi6Crk",
+        "block_T4TXd3"
+      ],
+      "settings": {
+        "padding-top": 40,
+        "padding-bottom": 60,
+        "usp_heading": ""
+      }
+    },
+    "1709960907a2453e35": {
+      "type": "apps",
+      "blocks": {
+        "instagram_feed_instafeed_rptr_raptor_instagram_Q9EUtN": {
+          "type": "shopify:\/\/apps\/instagram-feed-instafeed-rptr\/blocks\/raptor-instagram\/557ff51a-dc31-4dee-a7df-4610643fa410",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "instagram_feed_instafeed_rptr_raptor_instagram_Q9EUtN"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "YOU MAY ALSO LIKE",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "boys-essentials",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "image_banner_46DXdh": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_cBCmLp": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_8RXzLa": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "buttons_A4FW96": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_cBCmLp",
+        "text_8RXzLa",
+        "buttons_A4FW96"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/uspa-aus.webp",
+        "image_banner_link": "",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "multi_images_grid_layout_zVqLzQ": {
+      "type": "multi-images-grid-layout",
+      "disabled": true,
+      "settings": {
+        "padding-top": 40,
+        "padding-bottom": 40,
+        "title": "<p>Sport Meets Fashion<\/p>",
+        "description": "<p>When you purchase a U.S.Polo Assn products, you can own a piece of the polo sport. We are the official clothing brand of the United States Polo Association (USPA)--one of the oldest sports in the United States. This is a proud distinction that links our illusions past to a bright future that you are an important part of.<\/p>",
+        "link": "",
+        "banner_image": "shopify:\/\/shop_images\/1500x500.jpg",
+        "landscape_image1": "shopify:\/\/shop_images\/adpative.jpg",
+        "landscape_image2": "shopify:\/\/shop_images\/landscape2.png",
+        "adaptive_image": "shopify:\/\/shop_images\/419531783_18318842545191185_5909425669945551429_n.jpg",
+        "square_image": "shopify:\/\/shop_images\/mens-fashion-man-in-shirt-and-jeans-leaning-on-bicycle.jpg"
+      }
+    },
+    "featured_collection_list_X36hPK": {
+      "type": "featured-collection-list",
+      "disabled": true,
+      "settings": {
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "slideshow_9GAAVT",
+    "multi_image_banner_qmXCeE",
+    "featured_collection_9QVwfW",
+    "featured_collection_list_Mna4wb",
+    "featured_collection_product_grid_AMUgEX",
+    "video_Qfq6yV",
+    "shop_by_category_A33HNa",
+    "302182df-37df-47e3-8ecf-0eded61553dc",
+    "image_with_text_4nf8kT",
+    "usp_section_hdyHYm",
+    "1709960907a2453e35",
+    "featured_collection",
+    "image_banner_46DXdh",
+    "multi_images_grid_layout_zVqLzQ",
+    "featured_collection_list_X36hPK"
+  ]
+}

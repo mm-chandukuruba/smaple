@@ -1,0 +1,38 @@
+<div class="popup-wrapper"> 
+    <div class="popup-inner">
+        <div class="popup-heading__wrap flex-space-center">
+            <div class="popup-heading__inner">
+                <div class="size-heading text-body active pntr">SIZE GUIDE</div>
+            </div>
+            <div class="popup-close-btn pntr">{% render 'icon-cross' %}</div>
+        </div>
+        <div class="popup-main__wrap">
+            <div class="popup-main__inner size-content active">
+                <div class="popup-main__middle">
+                    <div class="popup-main__image-container">
+                        {% if settings.size_in_image %}
+                            <img srcset="{{ settings.size_in_image | image_url: width: settings.image_width }}, {{ settings.size_in_image | image_url: width: image_size_2x }} 2x"
+                                src="{{ settings.size_in_image | image_url: width: 760 }}"
+                                alt="{{ settings.size_in_image.alt | escape }}"
+                                loading="lazy"
+                                class="size-in-image"
+                                width="{{ settings.size_in_image.width }}"
+                                height="{{ settings.size_in_image.height }}">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="popup-main__bottom">
+                    {% if settings.size_contact_content != blank %}
+                      <div class="popup-main__bottom-top">
+                          <span>{% render 'whatsapp-icon' %}</span>
+                          <span class="size-contact-content caption-text">{{ settings.size_contact_content | replace: '[', '<span>' | replace: ']', '</span>' }}</span>
+                      </div>
+                    {% endif %}
+                    <div class="popup-main__bottom-bottom caption-text">
+                        {{ settings.size_text_content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

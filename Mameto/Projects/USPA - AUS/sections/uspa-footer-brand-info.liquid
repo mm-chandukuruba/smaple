@@ -1,0 +1,32 @@
+<div class="uspa_brand_info color-{{ section.settings.color_scheme }}">
+  {{ section.settings.brand_info }}
+</div>
+
+{% schema %}
+  {
+    "name": "Brand info",
+    "settings": [
+      {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "default": "scheme_4",
+          "label": "Color Scheme"
+      },
+      {
+        "type": "richtext",
+        "id": "brand_info",
+        "label": "Enter brand info",
+        "default": "<p>U.S. Polo Assn. is the official brand of the United States Polo Association (USPA), the non-profit governing body for the sport of polo in the United States and one of the oldest sports governing bodies, having been founded in 1890. With a multi-billion-dollar global footprint and worldwide distribution through some 1,100 U.S. Polo Assn. retail stores and thousands of department stores as well as sporting goods channels, independent retailers and e-commerce, U.S. Polo Assn. offers apparel for men, women, and children, as well as accessories and footwear in more than 190 countries worldwide.</p>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "brand info"
+      }
+    ],
+	"enabled_on": {
+      "templates": ["page"],
+      "groups": ["footer"]
+    }
+  }
+{% endschema %}

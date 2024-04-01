@@ -1,0 +1,10 @@
+let detailsElements = document.querySelectorAll('.mega-menu');
+detailsElements.forEach(function (detailsElement) {
+  detailsElement.addEventListener('mouseenter', function () {
+    console.log('open');
+    detailsElement.setAttribute('open', '');
+  });
+  detailsElement.addEventListener('mouseleave', function () {
+    detailsElement.removeAttribute('open');
+  });
+});

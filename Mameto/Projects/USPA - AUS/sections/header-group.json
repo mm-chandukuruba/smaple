@@ -1,0 +1,130 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "e772725b-7012-4c33-94ba-a0dba56f6d15": {
+          "type": "announcement",
+          "settings": {
+            "text": "READ ABOUT US",
+            "link": "shopify:\/\/pages\/about-us"
+          }
+        },
+        "56a1a9c1-c3f1-40ce-a624-b45b1e425b37": {
+          "type": "announcement",
+          "settings": {
+            "text": "SIGN UP & ENJOY 10% OFF",
+            "link": "shopify:\/\/collections\/all"
+          }
+        },
+        "6a861aae-be1e-425d-8eb3-0635de9c72f1": {
+          "type": "announcement",
+          "settings": {
+            "text": "FAST SHIPPING",
+            "link": "shopify:\/\/pages\/delivery-and-shipping-policy"
+          }
+        },
+        "7f2e4410-0231-4597-8fb7-b6430a2686eb": {
+          "type": "announcement",
+          "settings": {
+            "text": "EASY 28 DAYS RETURNS",
+            "link": "shopify:\/\/pages\/returns-refund-policy"
+          }
+        },
+        "9cd45d18-8e9f-442c-85f1-e78bd082563a": {
+          "type": "announcement",
+          "settings": {
+            "text": "GREAT CUSTOMER SERVICE",
+            "link": "https:\/\/uspoloassn.com.au\/pages\/contact"
+          }
+        }
+      },
+      "block_order": [
+        "e772725b-7012-4c33-94ba-a0dba56f6d15",
+        "56a1a9c1-c3f1-40ce-a624-b45b1e425b37",
+        "6a861aae-be1e-425d-8eb3-0635de9c72f1",
+        "7f2e4410-0231-4597-8fb7-b6430a2686eb",
+        "9cd45d18-8e9f-442c-85f1-e78bd082563a"
+      ],
+      "settings": {
+        "color_scheme": "accent-1",
+        "show_line_separator": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "image_blocks_PrcFtw": {
+          "type": "image_blocks",
+          "settings": {
+            "mega_menu_handle": "MENS",
+            "mega_menu_image": "shopify:\/\/shop_images\/mega_menu_image_8cd3724b-1700-4ad3-b61b-59a6976673bf.webp",
+            "mega_menu_image_link": "shopify:\/\/collections\/mens-essentials"
+          }
+        },
+        "image_blocks_rVFwa3": {
+          "type": "image_blocks",
+          "settings": {
+            "mega_menu_handle": "MENS",
+            "mega_menu_image": "shopify:\/\/shop_images\/WUP1064-L68-MS_1_97a409b4-c446-4748-be79-2ed2d3221b66.jpg",
+            "mega_menu_image_link": "shopify:\/\/collections\/baby-clothing"
+          }
+        },
+        "image_blocks_NpCeGU": {
+          "type": "image_blocks",
+          "settings": {
+            "mega_menu_handle": "MENS",
+            "mega_menu_image": "shopify:\/\/shop_images\/WUP1095-L54-MS_4.JPG",
+            "mega_menu_image_link": "shopify:\/\/collections"
+          }
+        }
+      },
+      "block_order": [
+        "image_blocks_PrcFtw",
+        "image_blocks_rVFwa3",
+        "image_blocks_NpCeGU"
+      ],
+      "settings": {
+        "logo_position": "top-left",
+        "menu": "header-menu",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": false,
+        "color_scheme": "background-1",
+        "menu_color_scheme": "accent-1",
+        "enable_country_selector": true,
+        "enable_language_selector": false,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "14f0ba81-c4cc-4d9f-9e27-a80a471102b2": {
+      "type": "swatches",
+      "blocks": {
+        "1ac9b425-aef8-46e9-b73f-de60dc331680": {
+          "type": "color_swatch",
+          "settings": {
+            "color_swatches_text": "Black:#000 | cobalt blue:#0047AB | eden green: #294036| red: #FF0000 | pansy: #6F5396 | Blue Wing Teal: #2c4053 | Bright Cobalt: #395d8d | Bright White: #f4f9ff | Bungee Cord: #696156 | Burnt Orange: #CC5500 | Castlerock: #5f6367 | Chipmunk: #977252 | Cuban Sand: #c1a68d | Dragonfly: #304a77 | Ebony: #555D50 | Eventide: #959fb7 | Fir: #27352a | Forest Night: #434237 | Haute Red: #a11729 | Laurel Wreath: #616f65 | Mallard Blue: #3a5c6e | Marshmallow: #f9f5ec | Milky Blue: #74a9bd | Molten Lava: #b5332e | Navy Blue: #000080 | Nimbus Cloud: #d5d5d8 | Real Teal: #348F91 | Riviera: #189fac | Rubber: #815b37 | Shaved Chocolate: #553c36 | Silver Birch: #A3A39A | Silver Gray: #c0c0c0 | Star Fish: #f4c84a | Sunflower: #FAE033 | Tillandsia Purple: #563474 | Vallarta Blue: #30658e | Vintage Grey Heather: #9aa297 | Vintage Indigo: #4a556b | Wine Tasting:  #492a34 |"
+          }
+        }
+      },
+      "block_order": [
+        "1ac9b425-aef8-46e9-b73f-de60dc331680"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "14f0ba81-c4cc-4d9f-9e27-a80a471102b2"
+  ]
+}
